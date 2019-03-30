@@ -1,0 +1,69 @@
+@import '_variables';
+@import '_mixins';
+
+body {
+    background-color: $white;
+}
+
+#sidebar {
+    @include shadow;
+    background-color: $black;
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    h1 {
+        color: $grey;
+        font-family: $title;
+        // margin-top: 150px;
+        text-align: center;
+        text-shadow: $titleShadow;
+    }
+    button {
+        border-radius: 0;
+        width: 100%;
+        background-color: $grey !important;
+        border: none;
+        @include buttonShadow;
+    }
+}
+
+// LEADERBOARD
+.leaderboard {
+    padding: 40px;
+}
+
+.jumbotron {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    #crown {
+        width: 350px;
+        height: 200px;
+        g {
+        fill: $targaryen;
+        }
+    }
+    h2 {
+        font-family: $title;
+    }
+}
+
+// CHARACTER STATUS
+#characterCard{
+    .card {
+        @include shadow;
+        margin: 5px;
+        flex-direction: column;
+        border-radius: 5px;
+    }
+    #content {
+        justify-content: center;
+        flex-direction: row;
+        padding: 3px;
+        i { color: $stark; }
+    }
+}

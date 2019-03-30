@@ -1,0 +1,11 @@
+@mixin shadow {
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+@mixin buttonShadow {
+    -webkit-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.8);
+    -moz-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.8);
+    box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.8);
+}
