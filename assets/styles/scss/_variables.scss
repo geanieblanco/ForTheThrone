@@ -1,9 +1,9 @@
 //family colors
 $stark: #D7DADB;
-$lannister: #D80000;
+$lannister: #D96300;
 $targaryen:#8D0000;
-$baratheon: '#D4AA00';
-$unaffiliated: #659B73;
+$baratheon: #D4AA00;
+$bannerless: #659B73;
 $whiteWalker: #CFF3FF;
 
 //main colors
@@ -27,5 +27,17 @@ $insetShadow: inset 1px 1px 3px #333;
     src: url("../TrajanusBricks.ttf") format('truetype');
 }
 
+@font-face {
+    font-family: "AppleGaramond";
+    src: url("../AppleGaramond.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "Hamburger_Schwabacher";
+    src: url("../Hamburger_Schwabacher.ttf") format('truetype');
+}
+
 $title: "GameofThrones";
 $subtitle: "TrajanusBricks";
+$body: "AppleGaramond";
+$heading: "Hamburger_Schwabacher";

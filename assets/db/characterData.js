@@ -61,7 +61,7 @@ characterData = [{
         "deathGuesses": 0,
         "aliveGuesses": 0,
         "walkerGuesses": 0,
-        "loyalty": "Unaffiliated"
+        "loyalty": "Bannerless"
     },
     {
         "id": 6,
@@ -165,7 +165,7 @@ characterData = [{
         "deathGuesses": 0,
         "aliveGuesses": 0,
         "walkerGuesses": 0,
-        "loyalty": "Unaffiliated"
+        "loyalty": "Bannerless"
     },
     {
         "id": 14,
@@ -243,7 +243,7 @@ characterData = [{
         "deathGuesses": 0,
         "aliveGuesses": 0,
         "walkerGuesses": 0,
-        "loyalty": "Unaffiliated"
+        "loyalty": "Bannerless"
     },
     {
         "id": 20,
@@ -256,7 +256,7 @@ characterData = [{
         "deathGuesses": 0,
         "aliveGuesses": 0,
         "walkerGuesses": 0,
-        "loyalty": "Unaffiliated"
+        "loyalty": "Bannerless"
     },
     {
         "id": 21,
@@ -269,7 +269,7 @@ characterData = [{
         "deathGuesses": 0,
         "aliveGuesses": 0,
         "walkerGuesses": 0,
-        "loyalty": "Unaffiliated"
+        "loyalty": "Bannerless"
     },
     {
         "id": 22,
@@ -282,7 +282,7 @@ characterData = [{
         "deathGuesses": 0,
         "aliveGuesses": 0,
         "walkerGuesses": 0,
-        "loyalty": "Unaffiliated"
+        "loyalty": "Bannerless"
     },
     {
         "id": 23,
@@ -334,7 +334,7 @@ characterData = [{
         "deathGuesses": 0,
         "aliveGuesses": 0,
         "walkerGuesses": 0,
-        "loyalty": "Unaffiliated"
+        "loyalty": "Bannerless"
     },
     {
         "id": 27,
@@ -360,7 +360,7 @@ characterData = [{
         "deathGuesses": 0,
         "aliveGuesses": 0,
         "walkerGuesses": 0,
-        "loyalty": "Unaffiliated"
+        "loyalty": "Bannerless"
     },
     {
         "id": 29,

@@ -1,46 +1,41 @@
-<div className="card" id="characterCard">
-    <div key={character.id} className="card-img-top">
-        <img
-        key={character.statusImage}
-        src={character.statusImage}
-        alt="..."
-        className="img-fluid"
-        />
+
+<div className="row">
+    <div className="form-group">
+    <div className="col-sm-12 col-md-6">
+    <input type="email" className="form-control" id="inputPassword" placeholder="Email"/>
     </div>
-    <div className="card-body" id="content">
-      <div id="status">
-        <span key={character.cardName}>{character.cardName} </span>
-        <i className="fas fa-shield-alt" key={character.loyalty}/>
-      </div>
+    <div className="col-sm-12 col-md-6">
+    <input type="password" className="form-control" id="inputPassword" placeholder="Username"/>
     </div>
     </div>
+</div>
+<div className="row" id="loyaltyButton">
+    <button type="input" role="button" className="btn btn-link" id="btn-Lannister" value="Lannister">
+    <i className="fas fa-shield-alt" id="Lannister"/>
+    <p>lannister</p>
+    </button>
+    <button type="input" role="button" className="btn btn-link" id="btn-Stark" value="Stark">
+    <i className="fas fa-shield-alt" id="Stark"/>
+    <p>stark</p>
+    </button>
+    <button type="input" role="button" className="btn btn-link" id="btn-Targaryen" value="Targaryen">
+    <i className="fas fa-shield-alt" id="Targaryen"/>
+    <p>targaryen</p>
+    </button>
+    <button type="input" role="button" className="btn btn-link" id="btn-Baratheon" value="Baratheon">
+    <i className="fas fa-shield-alt" id="Baratheon"/>
+    <p>baratheon</p>
+    </button>
+    <button type="input" role="button" className="btn btn-link" id="btn-Bannerless" value="Bannerless">
+    <i className="fas fa-shield-alt" id="Bannerless"/>
+    <p>bannerless</p>
+    </button>
+    <button type="input" role="button" className="btn btn-link" id="btn-Walker" value="Walker">
+    <i className="fas fa-shield-alt" id="Walker"/>
+    <p>walker</p>
+    </button>               
+    </div>
 
-if (character.loyalty != "Lannister") {
-  return 
-    <i className="fas fa-shield-alt" key={character.loyalty} id="lannister"/>
-}
-
-else if (character.loyalty != "Targaryen") {
-  return 
-    <i className="fas fa-shield-alt" key={character.loyalty} id="targaryen"/>
-}
-
-else if (character.loyalty != "Stark") {
-  return 
-    <i className="fas fa-shield-alt" key={character.loyalty} id="stark"/>
-}
-
-else if (character.loyalty != "Baratheon") {
-  return 
-    <i className="fas fa-shield-alt" key={character.loyalty} id="baratheon"/>
-}
-
-else if (character.loyalty != "Walker") {
-  return 
-    <i className="fas fa-shield-alt" key={character.loyalty} id="whitewalker"/>
-}
-
-else if (character.loyalty != "Unaffiliated") {
-  return 
-    <i className="fas fa-shield-alt" key={character.loyalty} id="targaryen"/>
-}
+<div className="row">
+{choiceCard}
+</div>

@@ -25,16 +25,16 @@
     <!-- global row -->
     <div class="row">
       <!-- sticky sidebar (not mobile) -->
-      <nav class="col-md-3 d-none d-md-block sidebar">
+      <nav class="col-md-3 col-sm-12">
         <div class="no-gutters" id="sidebar">
           <div class="align-middle">
             <h1 id="title">
               <span class="display-5">For the</span>
               <span class="display-4">Throne</span>
             </h1>
-            <button type="button" class="btn-lg btn-block" onclick="leaderboardPage()">leaderboard</button>
-            <button type="button" class="btn-lg btn-block" onclick="getCharacters()">the game</button>
-            <button type="button" class="btn-lg btn-block" onclick="testFlipcard()">my picks</button>
+            <button type="input" role="button" class="btn-lg btn-block" onclick="leaderboardPage()">leaderboard</button>
+            <button type="input" role="button" class="btn-lg btn-block" onclick="getCharacters()">the game</button>
+            <button type="input" role="button" class="btn-lg btn-block" onclick="makeChoice()">swear it</button>
           </div>
         </div>
       </nav>
@@ -97,8 +97,8 @@
               </div>
               <div className="card-body" id="content">
                 <div id="status">
-                <span key={character.cardName}>{character.cardName}</span>
-                <i className="fas fa-shield-alt" key={character.loyalty} id={character.loyalty.toString()}/>
+                  <span key={character.cardName}>{character.cardName}  </span>
+                  <i className="fas fa-shield-alt" key={character.loyalty} id={character.loyalty.toString()}/>
                 </div>
                 </div>
               </div>
@@ -107,8 +107,8 @@
             <div className="card" id="characterCard">
             <div className="card-body" id="content">
             <div className="card-block">
-            <h4 className="card-title">{character.name}</h4>
-            <h6 className="card-subtitle text-muted">{character.loyalty}</h6>
+            <h5 className="card-title">{character.name}</h5>
+            <h6 className="card-subtitle">Loyalty: {character.loyalty}</h6>
             <p className="card-text">{character.bio}</p>
             </div>
             </div>
@@ -228,6 +228,90 @@ class Leaderboard extends React.Component{
 function leaderboardPage() {
   ReactDOM.render(
     <Leaderboard/>,
+    document.getElementById('root')
+  )
+}
+
+class ChoiceCard extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      username: "",
+      email: "",
+      loyalty: ""
+    };
+}
+  
+  render() {
+
+    const choiceCard = characterData.map((character, key) =>
+    <div className="col-sm-12 col-md-3" id="choiceCard">
+        <div id="choiceContent">
+          <img src={character.statusImage}/>
+          <div id="choice-inner">
+            <span>{character.name}</span>
+          </div>
+        </div>
+      </div>
+  );
+
+  // handleClick = ()=> {
+  //   (value)=>this.setState(this.state.loyalty);
+  //   alert(this.state.loyalty);
+  // }
+    return (
+<div className="container"  id="selection">
+  <div className="row">
+    <h1>Swear Your Sword</h1>
+  </div>
+  <div className="row">
+      <div className="col-sm-12 col-md-6">
+        <input type="email" className="form-control" id="inputPassword" placeholder="Email"/>
+      </div>
+      <div className="col-sm-12 col-md-6">
+        <input type="password" className="form-control" id="inputPassword" placeholder="Username"/>
+      </div>
+  </div>
+  <div className="row" id="loyaltyButton">
+      <button type="input" role="button" className="btn btn-link hvr-float-shadow" id="btn-Lannister" value="Lannister">
+        <i className="fas fa-shield-alt" id="Lannister"/>
+        <p>lannister</p>
+      </button>
+      <button type="input" role="button" className="btn btn-link hvr-float-shadow" id="btn-Stark" value="Stark" checked>
+        <i className="fas fa-shield-alt" id="Stark"/>
+        <p>stark</p>
+      </button>
+      <button type="input" role="button" className="btn btn-link hvr-float-shadow" id="btn-Targaryen" value="Targaryen">
+        <i className="fas fa-shield-alt" id="Targaryen"/>
+        <p>targaryen</p>
+      </button>
+      <button type="input" role="button" className="btn btn-link hvr-float-shadow" id="btn-Baratheon" value="Baratheon">
+        <i className="fas fa-shield-alt" id="Baratheon"/>
+        <p>baratheon</p>
+      </button>
+      <button type="input" role="button" className="btn btn-link hvr-float-shadow" id="btn-Bannerless" value="Bannerless">
+        <i className="fas fa-shield-alt" id="Bannerless"/>
+        <p>bannerless</p>
+      </button>
+      <button type="input" role="button" className="btn btn-link hvr-float-shadow" id="btn-Walker" value="Walker">
+        <i className="fas fa-shield-alt" id="Walker"/>
+        <p>walker</p>
+      </button>              
+    </div>
+
+<div className="row">
+{choiceCard}
+</div>
+</div>
+
+      
+    )
+    }
+  }
+
+  function makeChoice() {
+    ReactDOM.render(
+      <ChoiceCard/>,
     document.getElementById('root')
   )
 }

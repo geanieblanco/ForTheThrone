@@ -41,3 +41,37 @@ to {
 -webkit-animation-name: fadeIn;
 animation-name: fadeIn;
 }
+
+@mixin loyaltyColors {
+    #Baratheon {
+        color: $baratheon;
+        text-shadow: $black 1px 1px 0;
+    }
+    #Lannister {
+        color: $lannister;
+        text-shadow: #e0e0e0 1px 1px 0;
+    }
+    #Stark {
+        color: $stark;
+        text-shadow: $black 1px 1px 0;
+    };
+    #Targaryen {
+        color: $targaryen;
+        text-shadow: #e0e0e0 1px 1px 0;
+    }
+    #Bannerless {
+        color: $bannerless;
+        text-shadow: #e0e0e0 1px 1px 0;
+    }
+    #Walker {
+        color: $whiteWalker;
+        text-shadow: $black 1px 1px 0;
+    }
+}
+
+@mixin title {
+    text-align: center;
+    text-shadow: $titleShadow;
+    color: $grey;
+    font-family: $title;
+}

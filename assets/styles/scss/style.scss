@@ -10,13 +10,15 @@ html {
     }
 }
 
+button { text-decoration: none;}
+
 body {
     background-color: $white;
 }
 
 .react-container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 #sidebar {
@@ -28,18 +30,14 @@ body {
     justify-content: center;
     align-items: center;
     position: fixed;
-    margin-right: 0px !important;
     h1 {
         display: flex;
         flex-direction: column;
         align-content: center;
         justify-content: space-evenly;
-        color: $grey;
-        margin: 5px;
-        font-family: $title;
         max-width: 100%;
-        text-align: center;
-        text-shadow: $titleShadow;
+        margin: 10px;
+        @include title;
         span {
             margin-top: 15px;
         }
@@ -104,53 +102,33 @@ body {
         justify-content: center;
         flex-direction: row;
         padding: 3px;
-        #Baratheon {
-            color: $baratheon;
-            text-shadow: $black 1px 1px 0;
-        }
-        #Lannister {
-            color: $lannister;
-            text-shadow: #e0e0e0 1px 1px 0;
-        }
-        #Stark {
-            color: $stark;
-            text-shadow: $black 1px 1px 0;
-        };
-        #Targaryen {
-            color: $targaryen;
-            text-shadow: #e0e0e0 1px 1px 0;
-        }
-        #Unaffiliated {
-            color: $unaffiliated;
-            text-shadow: #e0e0e0 1px 1px 0;
-        }
-        #Walker {
-            color: $whiteWalker;
-            text-shadow: $black 1px 1px 0;
-        }
-        i {
-            margin-top: 1px 1px;
-            
-        }
+        @include loyaltyColors;
         span { 
             font-family: $subtitle;
             font-size: 13px;
+            text-transform: lowercase;
         }
         p {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: $body;
             padding: 3px;
-            line-height: 15px;
+            line-height: 17px;
         }
-        h4 {
+        h5 {
             padding-top: 10px;
             font-family: $subtitle;
-            font-size: 20px;
+            font-size: 17px;
             text-align: center;
+            text-transform: lowercase;
+        }
+        h6 {
+            font-family: $heading;
+            text-align: center;
+            color: $white;
         }
         #status {
+            margin-top: 4px;
             display: flex;
             flex-direction: row;
-            justify-content: center;
         }
     }
 .card {
@@ -197,4 +175,60 @@ transform: rotateY(0deg);
 transform: rotateY(180deg);
 height: 100% !important;
 width: 100%;
+}
+
+#selection {
+    display: flex;
+    flex-direction: column;
+    margin-top:40px;
+    margin-bottom: 40px;
+    align-items: center;
+    h1 { 
+        @include title;
+        margin: 15px;
+    }
+}
+
+//my picks
+#loyaltyButton {
+    button {
+        text-decoration: none;
+        font-size: 15px;
+        &:hover{
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+    }
+    i { 
+        padding: 5px;
+        font-size: 50px;
+    }
+    @include loyaltyColors;
+    p {
+        font-family: $title;
+        color: black;
+    }
+}
+
+#choiceCard {
+    #choiceContent {
+        background-color: $grey;
+        border-radius: 10px;
+        margin: 5px;
+        display: flex;
+        flex-direction: row;
+        img {
+            height: 120px;
+            width: 100px;
+            border-radius: 10px 0px 0px 10px;
+            padding: 2px;
+        }
+        #choice-inner {
+            span { 
+                font-family: $subtitle;
+                font-size: 12px;
+                text-transform: lowercase;
+            }
+        }
+    }
 }
