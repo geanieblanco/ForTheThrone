@@ -10,8 +10,13 @@ html {
     }
 }
 
+body {
+    background-color: $white;
+}
+
 .react-container {
-    // overflow-y: scroll;
+    display: flex;
+    justify-content: flex-start;
 }
 
 #sidebar {
@@ -23,6 +28,7 @@ html {
     justify-content: center;
     align-items: center;
     position: fixed;
+    margin-right: 0px !important;
     h1 {
         display: flex;
         flex-direction: column;
@@ -84,6 +90,10 @@ html {
     flex-direction: column;
     border-radius: 5px;
     border: none;
+    #false {
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+    }
     img{
         width: 100%;
         height: 100%;
@@ -91,11 +101,41 @@ html {
     }
     }
     #content {
-        justify-content: space-around;
+        justify-content: center;
         flex-direction: row;
         padding: 3px;
-        i { color: $stark; }
-        span { font-family: $subtitle;}
+        #Baratheon {
+            color: $baratheon;
+            text-shadow: $black 1px 1px 0;
+        }
+        #Lannister {
+            color: $lannister;
+            text-shadow: #e0e0e0 1px 1px 0;
+        }
+        #Stark {
+            color: $stark;
+            text-shadow: $black 1px 1px 0;
+        };
+        #Targaryen {
+            color: $targaryen;
+            text-shadow: #e0e0e0 1px 1px 0;
+        }
+        #Unaffiliated {
+            color: $unaffiliated;
+            text-shadow: #e0e0e0 1px 1px 0;
+        }
+        #Walker {
+            color: $whiteWalker;
+            text-shadow: $black 1px 1px 0;
+        }
+        i {
+            margin-top: 1px 1px;
+            
+        }
+        span { 
+            font-family: $subtitle;
+            font-size: 13px;
+        }
         p {
             font-family: 'Courier New', Courier, monospace;
             padding: 3px;
@@ -107,11 +147,19 @@ html {
             font-size: 20px;
             text-align: center;
         }
+        #status {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
     }
+.card {
+    width: 100%;
+    height: 260px;
+}
 
 //
 .card-flip {
-    perspective: 1000px;
     &:hover .flip,
     &.hover .flip {
     transform: rotateY(180deg);
@@ -121,8 +169,9 @@ html {
 .card-flip,
 .front,
 .back {
-width: 100%;
-height: 320px;
+    width: 100%;
+    height: 360px;;
+    margin: 0px;
 }
 
 .flip {
@@ -147,5 +196,5 @@ transform: rotateY(0deg);
 .back {
 transform: rotateY(180deg);
 height: 100% !important;
-width: 235px;
+width: 100%;
 }

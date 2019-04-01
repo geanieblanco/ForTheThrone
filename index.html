@@ -26,7 +26,7 @@
     <div class="row">
       <!-- sticky sidebar (not mobile) -->
       <nav class="col-md-3 d-none d-md-block sidebar">
-        <div class="sidebar-sticky no-gutters" id="sidebar">
+        <div class="no-gutters" id="sidebar">
           <div class="align-middle">
             <h1 id="title">
               <span class="display-5">For the</span>
@@ -40,7 +40,7 @@
       </nav>
 
       <!-- main content //r react -->
-        <!-- testing - NOTHING BEFORE 'root' -->
+      <!-- testing - NOTHING BEFORE 'root' -->
       <div class="col-md-9 col-sm-12 react-container">
         <div id="root" class=""></div>
       </div>
@@ -61,7 +61,7 @@
   <script src="./assets/pages/statusCard.js"></script>
   <!-- <script src="./assets/db/characterData.js"></script> -->
   <script type="text/babel">
-  require(["./assets/db/characterData.js"])
+    require(["./assets/db/characterData.js"])
       // Character Status Card  
 
   class StatusCard extends React.Component {
@@ -80,43 +80,46 @@
       //     console.log(this.state.characters)
       //   });
       // });
+
       const characterCard = characterData.map((character, key) =>
-        <div className="col-sm-6 col-md-3">
-            <div className="card-flip">
-                <div className="flip">
-                    <div className="front">
-                            <div className="card" id="characterCard">
-                                <div key={character.id} className="card-img-top">
-                                    <img
-                                    key={character.statusImage}
-                                    src={character.statusImage}
-                                    alt="..."
-                                    className="img-fluid"
-                                    />
-                                </div>
-                                <div className="card-body" id="content">
-                                    <span key={character.cardName}>{character.cardName} </span>
-                                    <i className="fas fa-shield-alt" key={character.loyalty}/>
-                                </div>
-                                </div>
-                    </div>
-                    <div className="back">
-                        <div className="card" id="characterCard">
-                            <div className="card-body" id="content">
-                          <div className="card-block">
-                            <h4 className="card-title">{character.name}</h4>
-                            <h6 className="card-subtitle text-muted">{character.loyalty}</h6>
-                            <p className="card-text">{character.bio}</p>
-                          </div>
-                          </div>
-                        </div>
-                    </div>
+      <div className="col-sm-6 col-md-3">
+        <div className="card-flip">
+          <div className="flip">
+            <div className="front">
+              <div className="card" id="characterCard">
+              <div key={character.id} className="card-img-top" id={character.alive.toString()}>
+                <img
+                key={character.statusImage}
+                src={character.statusImage}
+                alt="..."
+                className="img-fluid"
+                />
+              </div>
+              <div className="card-body" id="content">
+                <div id="status">
+                <span key={character.cardName}>{character.cardName}</span>
+                <i className="fas fa-shield-alt" key={character.loyalty} id={character.loyalty.toString()}/>
                 </div>
+                </div>
+              </div>
             </div>
+            <div className="back">
+            <div className="card" id="characterCard">
+            <div className="card-body" id="content">
+            <div className="card-block">
+            <h4 className="card-title">{character.name}</h4>
+            <h6 className="card-subtitle text-muted">{character.loyalty}</h6>
+            <p className="card-text">{character.bio}</p>
+            </div>
+            </div>
+            </div>
+            </div>
+          </div>
         </div>
+      </div>
     );
       return (
-        <div className="row" id="content">
+        <div className="row">
           {characterCard}
         </div>
         

@@ -1,40 +1,46 @@
-<section>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-lg-4">
-                    <!-- Card Flip -->
-                    <div class="card-flip">
-                        <div class="flip">
-                            <div class="front">
-                                <!-- front content -->
-                                <div class="card">
-                                  <img class="card-img-top" data-src="holder.js/100px180/" alt="100%x180" style="height: 180px; width: 100%; display: block;" data-holder-rendered="true">
-                                  <div class="card-block">
-                                    <h4 class="card-title">Card Flip</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                  </div>
-                                </div>
-                            </div>
-                            <div class="back">
-                                <!-- back content -->
-                                <div class="card">
-                                  <div class="card-block">
-                                    <h4 class="card-title">Card Flip</h4>
-                                    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                                  </div>
-                                  <img data-src="holder.js/100px180/?text=Image" alt="Image [100%x180]" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
-                                  <div class="card-block">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Card Flip -->
-                </div>
-            </div>
-        </div>
-    </section>
+<div className="card" id="characterCard">
+    <div key={character.id} className="card-img-top">
+        <img
+        key={character.statusImage}
+        src={character.statusImage}
+        alt="..."
+        className="img-fluid"
+        />
+    </div>
+    <div className="card-body" id="content">
+      <div id="status">
+        <span key={character.cardName}>{character.cardName} </span>
+        <i className="fas fa-shield-alt" key={character.loyalty}/>
+      </div>
+    </div>
+    </div>
+
+if (character.loyalty != "Lannister") {
+  return 
+    <i className="fas fa-shield-alt" key={character.loyalty} id="lannister"/>
+}
+
+else if (character.loyalty != "Targaryen") {
+  return 
+    <i className="fas fa-shield-alt" key={character.loyalty} id="targaryen"/>
+}
+
+else if (character.loyalty != "Stark") {
+  return 
+    <i className="fas fa-shield-alt" key={character.loyalty} id="stark"/>
+}
+
+else if (character.loyalty != "Baratheon") {
+  return 
+    <i className="fas fa-shield-alt" key={character.loyalty} id="baratheon"/>
+}
+
+else if (character.loyalty != "Walker") {
+  return 
+    <i className="fas fa-shield-alt" key={character.loyalty} id="whitewalker"/>
+}
+
+else if (character.loyalty != "Unaffiliated") {
+  return 
+    <i className="fas fa-shield-alt" key={character.loyalty} id="targaryen"/>
+}
