@@ -3,10 +3,15 @@
 
 html {
     background-color: $white;
+    -ms-overflow-style: none;  // IE 10+
+    scrollbar-width: none;  // Firefox
+    &:-webkit-scrollbar { 
+        display: none;  // Safari and Chrome
+    }
 }
 
 .react-container {
-    overflow-y: scroll;
+    // overflow-y: scroll;
 }
 
 #sidebar {
@@ -71,7 +76,7 @@ html {
 
 // CHARACTER STATUS
 #characterCard{
-    margin-top: 30px;
+    margin: 10px;   
     background-color: $grey;
     display: flex;
     align-items: center;
@@ -91,4 +96,56 @@ html {
         padding: 3px;
         i { color: $stark; }
         span { font-family: $subtitle;}
+        p {
+            font-family: 'Courier New', Courier, monospace;
+            padding: 3px;
+            line-height: 15px;
+        }
+        h4 {
+            padding-top: 10px;
+            font-family: $subtitle;
+            font-size: 20px;
+            text-align: center;
+        }
     }
+
+//
+.card-flip {
+    perspective: 1000px;
+    &:hover .flip,
+    &.hover .flip {
+    transform: rotateY(180deg);
+}
+}
+
+.card-flip,
+.front,
+.back {
+width: 100%;
+height: 320px;
+}
+
+.flip {
+transition: 0.6s;
+transform-style: preserve-3d;
+position: relative;
+}
+
+.front,
+.back {
+backface-visibility: hidden;
+position: absolute;
+top: 0;
+left: 0;
+}
+
+.front {
+z-index: 2;
+transform: rotateY(0deg);
+}
+
+.back {
+transform: rotateY(180deg);
+height: 100% !important;
+width: 235px;
+}

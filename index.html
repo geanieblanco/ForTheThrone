@@ -34,7 +34,7 @@
             </h1>
             <button type="button" class="btn-lg btn-block" onclick="leaderboardPage()">leaderboard</button>
             <button type="button" class="btn-lg btn-block" onclick="getCharacters()">the game</button>
-            <button type="button" class="btn-lg btn-block">my picks</button>
+            <button type="button" class="btn-lg btn-block" onclick="testFlipcard()">my picks</button>
           </div>
         </div>
       </nav>
@@ -82,21 +82,38 @@
       // });
       const characterCard = characterData.map((character, key) =>
         <div className="col-sm-6 col-md-3">
-                <div className="card fadeIn" id="characterCard">
-                  <div key={character.id} className="card-img-top">
-                    <img
-                      key={character.statusImage}
-                      src={character.statusImage}
-                      alt="..."
-                      className="img-fluid"
-                    />
-                  </div>
-                  <div className="card-body" id="content">
-                    <span key={character.cardName}>{character.cardName} </span>
-                    <i className="fas fa-shield-alt" key={character.loyalty}/>
-                  </div>
+            <div className="card-flip">
+                <div className="flip">
+                    <div className="front">
+                            <div className="card" id="characterCard">
+                                <div key={character.id} className="card-img-top">
+                                    <img
+                                    key={character.statusImage}
+                                    src={character.statusImage}
+                                    alt="..."
+                                    className="img-fluid"
+                                    />
+                                </div>
+                                <div className="card-body" id="content">
+                                    <span key={character.cardName}>{character.cardName} </span>
+                                    <i className="fas fa-shield-alt" key={character.loyalty}/>
+                                </div>
+                                </div>
+                    </div>
+                    <div className="back">
+                        <div className="card" id="characterCard">
+                            <div className="card-body" id="content">
+                          <div className="card-block">
+                            <h4 className="card-title">{character.name}</h4>
+                            <h6 className="card-subtitle text-muted">{character.loyalty}</h6>
+                            <p className="card-text">{character.bio}</p>
+                          </div>
+                          </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
     );
       return (
         <div className="row" id="content">
@@ -211,6 +228,8 @@ function leaderboardPage() {
     document.getElementById('root')
   )
 }
+
+
   </script>
 </body>
 
