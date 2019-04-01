@@ -2,37 +2,75 @@
   font-family: "GameofThrones";
   src: url("../GameofThrones.ttf") format("truetype");
 }
-body {
+@font-face {
+  font-family: "TrajanusBricks";
+  src: url("../TrajanusBricks.ttf") format("truetype");
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+html {
   background-color: #F0F4F5;
 }
 
+.react-container {
+  overflow-y: scroll;
+}
+
 #sidebar {
-  -webkit-box-shadow: 4px 2px 13px -4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 4px 2px 13px -4px rgba(0, 0, 0, 0.75);
-  box-shadow: 4px 2px 13px -4px rgba(0, 0, 0, 0.75);
-  background-color: #252525;
-  min-height: 100vh;
-  max-height: 100vh;
+  background-color: #4D4D4D;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0px;
+  position: fixed;
 }
 #sidebar h1 {
-  color: #979090;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-evenly;
+  color: #9b9494;
+  margin: 5px;
   font-family: "GameofThrones";
+  max-width: 100%;
   text-align: center;
   text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e, 0 10px 0 #1c1c1c, 0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414, 0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
 }
+#sidebar h1 span {
+  margin-top: 15px;
+}
 #sidebar button {
   border-radius: 0;
+  margin-top: 20px;
   width: 100%;
-  background-color: #979090 !important;
+  background-color: #9b9494 !important;
   border: none;
-  -webkit-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.8);
-  -moz-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.8);
-  box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.8);
+  font-family: "TrajanusBricks";
+}
+#sidebar button:active {
+  -webkit-box-shadow: inset 1px 1px 3px #333;
+  -moz-box-shadow: inset 1px 1px 3px #333;
+  box-shadow: inset 1px 1px 3px #333;
 }
 
 .leaderboard {
@@ -55,21 +93,31 @@ body {
   font-family: "GameofThrones";
 }
 
-#characterCard .card {
-  -webkit-box-shadow: 4px 2px 13px -4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 4px 2px 13px -4px rgba(0, 0, 0, 0.75);
-  box-shadow: 4px 2px 13px -4px rgba(0, 0, 0, 0.75);
-  margin: 5px;
+#characterCard {
+  margin-top: 30px;
+  background-color: #9b9494;
+  display: flex;
+  align-items: center;
   flex-direction: column;
   border-radius: 5px;
+  border: none;
 }
-#characterCard #content {
-  justify-content: center;
+#characterCard img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px 5px 0px 0px;
+}
+
+#content {
+  justify-content: space-around;
   flex-direction: row;
   padding: 3px;
 }
-#characterCard #content i {
+#content i {
   color: #D7DADB;
+}
+#content span {
+  font-family: "TrajanusBricks";
 }
 
 /*# sourceMappingURL=style.css.map */

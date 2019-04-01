@@ -1,35 +1,52 @@
 @import '_variables';
 @import '_mixins';
 
-body {
+html {
     background-color: $white;
 }
 
+.react-container {
+    overflow-y: scroll;
+}
+
 #sidebar {
-    @include shadow;
+    // @include shadow;
     background-color: $black;
-    min-height: 100vh;
-    max-height: 100vh;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0px;
+    position: fixed;
     h1 {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: space-evenly;
         color: $grey;
+        margin: 5px;
         font-family: $title;
-        // margin-top: 150px;
+        max-width: 100%;
         text-align: center;
         text-shadow: $titleShadow;
+        span {
+            margin-top: 15px;
+        }
     }
     button {
         border-radius: 0;
+        margin-top: 20px;
         width: 100%;
         background-color: $grey !important;
         border: none;
-        @include buttonShadow;
+        font-family: $subtitle;
+        // @include buttonShadow;
+        &:active{
+            @include buttonInset;
+        }
     }
 }
+
 
 // LEADERBOARD
 .leaderboard {
@@ -54,16 +71,24 @@ body {
 
 // CHARACTER STATUS
 #characterCard{
-    .card {
-        @include shadow;
-        margin: 5px;
-        flex-direction: column;
-        border-radius: 5px;
+    margin-top: 30px;
+    background-color: $grey;
+    display: flex;
+    align-items: center;
+    // @include shadow;
+    flex-direction: column;
+    border-radius: 5px;
+    border: none;
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 5px 5px 0px 0px;
+    }
     }
     #content {
-        justify-content: center;
+        justify-content: space-around;
         flex-direction: row;
         padding: 3px;
         i { color: $stark; }
+        span { font-family: $subtitle;}
     }
-}

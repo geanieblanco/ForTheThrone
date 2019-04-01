@@ -29,89 +29,93 @@
         <div class="sidebar-sticky no-gutters" id="sidebar">
           <div class="align-middle">
             <h1 id="title">
-              <p class="display-5">For the</p>
-              <p class="display-4">Throne</p>
+              <span class="display-5">For the</span>
+              <span class="display-4">Throne</span>
             </h1>
-            <button type="button" class="btn-lg btn-block" onclick="leaderboardPage()">LEADERBOARD</button>
-            <button type="button" class="btn-lg btn-block">MY PICKS</button>
-            <button type="button" class="btn-lg btn-block" onclick="characterPage()">CHARACTER STATUS</button>
+            <button type="button" class="btn-lg btn-block" onclick="leaderboardPage()">leaderboard</button>
+            <button type="button" class="btn-lg btn-block" onclick="getCharacters()">the game</button>
+            <button type="button" class="btn-lg btn-block">my picks</button>
           </div>
         </div>
       </nav>
 
       <!-- main content //r react -->
-      <div class="col-sm-12 col-md-9">
-        <div class="row" id="characterCard">
-                <div class="col-sm-5 col-md-2">
-                    <div class="card">
-                      <div  class="card-img-top">
-                          <img src="./assets/images/status/arya.png" alt="..." class="img-fluid"/>
-                      </div>
-                      <div class="card-body" id="content">
-                          <span>Arya</span>
-                          <i class="fas fa-shield-alt"></i>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-5 col-md-2">
-                      <div class="card">
-                        <div  class="card-img-top">
-                            <img src="./assets/images/status/beric.png" alt="..." class="img-fluid"/>
-                        </div>
-                        <div class="card-body" id="content">
-                            <span>Beric</span>
-                            <i class="fas fa-shield-alt"></i>
-                          </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-5 col-md-2">
-                        <div class="card">
-                          <div  class="card-img-top">
-                              <img src="./assets/images/status/babysam.png" alt="..." class="img-fluid"/>
-                          </div>
-                          <div class="card-body" id="content">
-                              <span>Baby Sam</span>
-                              <i class="fas fa-shield-alt"></i>
-                            </div>
-                        </div>
-                      </div>
-            </div>
-      </div>
         <!-- testing - NOTHING BEFORE 'root' -->
-        <div id="root"></div>
+      <div class="col-md-9 col-sm-12 react-container">
+        <div id="root" class=""></div>
       </div>
-      <!-- react elements -->
     </div>
   </main>
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Firebase App is always required and must be first -->
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+  <!-- Add additional services that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-firestore.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
-  <script src="assets/pages/statusCard.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
   <script src="./app.js"></script>
+  <script src="./assets/pages/statusCard.js"></script>
+  <!-- <script src="./assets/db/characterData.js"></script> -->
   <script type="text/babel">
+  require(["./assets/db/characterData.js"])
+      // Character Status Card  
+
+  class StatusCard extends React.Component {
+    constructor() {
+      super();
+      this.state = { characters: characterData};
+  }
     
-    // Character Status Card
-class StatusCard extends React.Component{
-  render() {
-    return (
-      <div className="col-sm-8 col-md-4">
-        <div className="card">
-          <img src="https://via.placeholder.com/120x140" className="card-img-top" alt="..." />
-          <div className="card-body">
-            <p className="card-title">Bronn of the Blackwater</p>
-            <i class="fas fa-shield-alt"></i>
-          </div>
+    render() {
+      console.log(this.state.characters)
+      // db.collection("characters").get().then(function(querySnapshot) {
+      //   querySnapshot.forEach(function(doc) {
+      //     let character = doc;
+      //     console.log(character.id, " => ", character.data());
+      //     this.setState({characters: [name:character.name, statusImage:character.statusImage, loyalty:character.loyalty]});
+      //     console.log(this.state.characters)
+      //   });
+      // });
+      const characterCard = characterData.map((character, key) =>
+        <div className="col-sm-6 col-md-3">
+                <div className="card fadeIn" id="characterCard">
+                  <div key={character.id} className="card-img-top">
+                    <img
+                      key={character.statusImage}
+                      src={character.statusImage}
+                      alt="..."
+                      className="img-fluid"
+                    />
+                  </div>
+                  <div className="card-body" id="content">
+                    <span key={character.cardName}>{character.cardName} </span>
+                    <i className="fas fa-shield-alt" key={character.loyalty}/>
+                  </div>
+                </div>
+            </div>
+    );
+      return (
+        <div className="row" id="content">
+          {characterCard}
         </div>
-      </div>
-      )}}
-  function characterPage() {
-      ReactDOM.render(
-          <StatusCard/>,
-          document.getElementById('root')
-      );
+        
+      )
       }
+    }
+
+    function getCharacters() {
+      ReactDOM.render(
+        <StatusCard/>,
+      document.getElementById('root')
+    )
+  }
+
+
+
 // Leaderboard
 class Leaderboard extends React.Component{
   render() {

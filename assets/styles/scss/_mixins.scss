@@ -9,3 +9,35 @@
     -moz-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.8);
     box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.8);
 }
+
+@mixin buttonInset {
+    -webkit-box-shadow: $insetShadow;
+    -moz-box-shadow: $insetShadow;
+    box-shadow: $insetShadow;
+}
+
+// A N I M A T I O N S
+@-webkit-keyframes fadeIn {
+from {
+    opacity: 0;
+}
+
+to {
+    opacity: 1;
+}
+}
+
+@keyframes fadeIn {
+from {
+    opacity: 0;
+}
+
+to {
+    opacity: 1;
+}
+}
+
+.fadeIn {
+-webkit-animation-name: fadeIn;
+animation-name: fadeIn;
+}
