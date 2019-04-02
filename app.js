@@ -14,6 +14,7 @@ firebase.initializeApp(config);
 var db = firebase.firestore();
 
 //document references
+userRef = ()=> db.collection("users");
 CharacterData = ()=> db.collection("characters");
 Arya = ()=> db.collection("characters").doc("Arya");
 Gendry = ()=> db.collection("characters").doc("Gendry");

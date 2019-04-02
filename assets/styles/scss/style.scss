@@ -177,16 +177,21 @@ height: 100% !important;
 width: 100%;
 }
 
+#newUser {
+    @extend #selection;
+    h1 { 
+        @include title;
+        margin: 15px;
+        letter-spacing: 4px;
+    }
+}
+
 #selection {
     display: flex;
     flex-direction: column;
     margin-top:40px;
     margin-bottom: 40px;
     align-items: center;
-    h1 { 
-        @include title;
-        margin: 15px;
-    }
 }
 
 //my picks
@@ -212,14 +217,15 @@ width: 100%;
 
 #choiceCard {
     #choiceContent {
-        background-color: $grey;
-        border-radius: 10px;
-        margin: 5px;
-        display: flex;
-        flex-direction: row;
+    display: flex;
+    flex-direction: row;
+    background-color: $grey;
+    border-radius: 10px;
+    margin-top: 5px;
         img {
             height: 120px;
-            width: 100px;
+            min-width: 100px;
+            max-width: 100px;
             border-radius: 10px 0px 0px 10px;
             padding: 2px;
         }
@@ -228,6 +234,9 @@ width: 100%;
                 font-family: $subtitle;
                 font-size: 12px;
                 text-transform: lowercase;
+            }
+            label {
+                font-family: $heading;
             }
         }
     }

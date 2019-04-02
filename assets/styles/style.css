@@ -1,14 +1,14 @@
 @font-face {
   font-family: "GameofThrones";
-  src: url("../GameofThrones.ttf") format("truetype");
+  src: url("../fonts/GameofThrones.ttf") format("truetype");
 }
 @font-face {
   font-family: "TrajanusBricks";
-  src: url("../TrajanusBricks.ttf") format("truetype");
+  src: url("../fonts/TrajanusBricks.ttf") format("truetype");
 }
 @font-face {
   font-family: "AppleGaramond";
-  src: url("../AppleGaramond.ttf") format("truetype");
+  src: url("../fonts/AppleGaramond.ttf") format("truetype");
 }
 @font-face {
   font-family: "Hamburger_Schwabacher";
@@ -234,19 +234,21 @@ body {
   width: 100%;
 }
 
-#selection {
-  display: flex;
-  flex-direction: column;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  align-items: center;
-}
-#selection h1 {
+#newUser h1 {
   text-align: center;
   text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e, 0 10px 0 #1c1c1c, 0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414, 0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
   color: #9b9494;
   font-family: "GameofThrones";
   margin: 15px;
+  letter-spacing: 4px;
+}
+
+#selection, #newUser {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  align-items: center;
 }
 
 #loyaltyButton button {
@@ -291,15 +293,16 @@ body {
 }
 
 #choiceCard #choiceContent {
-  background-color: #9b9494;
-  border-radius: 10px;
-  margin: 5px;
   display: flex;
   flex-direction: row;
+  background-color: #9b9494;
+  border-radius: 10px;
+  margin-top: 5px;
 }
 #choiceCard #choiceContent img {
   height: 120px;
-  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
   border-radius: 10px 0px 0px 10px;
   padding: 2px;
 }
@@ -307,6 +310,9 @@ body {
   font-family: "TrajanusBricks";
   font-size: 12px;
   text-transform: lowercase;
+}
+#choiceCard #choiceContent #choice-inner label {
+  font-family: "Hamburger_Schwabacher";
 }
 
 /*# sourceMappingURL=style.css.map */

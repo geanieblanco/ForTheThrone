@@ -34,7 +34,7 @@
             </h1>
             <button type="input" role="button" class="btn-lg btn-block" onclick="leaderboardPage()">leaderboard</button>
             <button type="input" role="button" class="btn-lg btn-block" onclick="getCharacters()">the game</button>
-            <button type="input" role="button" class="btn-lg btn-block" onclick="makeChoice()">swear it</button>
+            <button type="input" role="button" class="btn-lg btn-block" onclick="newUser()">swear it</button>
           </div>
         </div>
       </nav>
@@ -62,6 +62,7 @@
   <!-- <script src="./assets/db/characterData.js"></script> -->
   <script type="text/babel">
     require(["./assets/db/characterData.js"])
+    require(["./app.js"])
       // Character Status Card  
 
   class StatusCard extends React.Component {
@@ -232,89 +233,154 @@ function leaderboardPage() {
   )
 }
 
-class ChoiceCard extends React.Component {
-  constructor() {
-    super();
-    this.state = {
+// class ChoiceCard extends React.Component {
+
+// render() {
+
+  
+
+// return (<div className="row"><NewUser/>{choiceCard}</div>)
+//   }
+// }
+
+// function makeChoice() {
+//   ReactDOM.render(
+//     <ChoiceCard/>,
+//   document.getElementById('root')
+// )}
+
+class NewUser extends React.Component {
+  constructor(){
+    super()
+    this.state = { 
       username: "",
       email: "",
-      loyalty: ""
-    };
-}
-  
-  render() {
-
-    const choiceCard = characterData.map((character, key) =>
-    <div className="col-sm-12 col-md-3" id="choiceCard">
-        <div id="choiceContent">
-          <img src={character.statusImage}/>
-          <div id="choice-inner">
-            <span>{character.name}</span>
-          </div>
-        </div>
-      </div>
-  );
-
-  // handleClick = ()=> {
-  //   (value)=>this.setState(this.state.loyalty);
-  //   alert(this.state.loyalty);
-  // }
-    return (
-<div className="container"  id="selection">
-  <div className="row">
-    <h1>Swear Your Sword</h1>
-  </div>
-  <div className="row">
-      <div className="col-sm-12 col-md-6">
-        <input type="email" className="form-control" id="inputPassword" placeholder="Email"/>
-      </div>
-      <div className="col-sm-12 col-md-6">
-        <input type="password" className="form-control" id="inputPassword" placeholder="Username"/>
-      </div>
-  </div>
-  <div className="row" id="loyaltyButton">
-      <button type="input" role="button" className="btn btn-link hvr-float-shadow" id="btn-Lannister" value="Lannister">
-        <i className="fas fa-shield-alt" id="Lannister"/>
-        <p>lannister</p>
-      </button>
-      <button type="input" role="button" className="btn btn-link hvr-float-shadow" id="btn-Stark" value="Stark" checked>
-        <i className="fas fa-shield-alt" id="Stark"/>
-        <p>stark</p>
-      </button>
-      <button type="input" role="button" className="btn btn-link hvr-float-shadow" id="btn-Targaryen" value="Targaryen">
-        <i className="fas fa-shield-alt" id="Targaryen"/>
-        <p>targaryen</p>
-      </button>
-      <button type="input" role="button" className="btn btn-link hvr-float-shadow" id="btn-Baratheon" value="Baratheon">
-        <i className="fas fa-shield-alt" id="Baratheon"/>
-        <p>baratheon</p>
-      </button>
-      <button type="input" role="button" className="btn btn-link hvr-float-shadow" id="btn-Bannerless" value="Bannerless">
-        <i className="fas fa-shield-alt" id="Bannerless"/>
-        <p>bannerless</p>
-      </button>
-      <button type="input" role="button" className="btn btn-link hvr-float-shadow" id="btn-Walker" value="Walker">
-        <i className="fas fa-shield-alt" id="Walker"/>
-        <p>walker</p>
-      </button>              
-    </div>
-
-<div className="row">
-{choiceCard}
-</div>
-</div>
-
-      
-    )
-    }
+      loyalty: "",
+      userChoices: [] }
   }
 
-  function makeChoice() {
+  handleChange = (choice, key) => {
+      this.setState(prevState => ({
+          userChoices: { ...prevState.userChoices, [key]: choice }
+      }));
+  };
+
+
+// newUser = ()=> {
+//   userRef.doc(this.state.username.toString()).set({
+//     email: this.state.email;
+//     loyalty: this.state.loyalty;
+//   })
+// }
+
+render() {
+  const choices = [
+      "Alive",
+      "Dead",
+      "Walker"
+  ]
+
+  const houses = [
+    "Lannister",
+    "Baratheon",
+    "Targaryen",
+    "Stark",
+    "Bannerless",
+    "Walker"
+  ]
+  
+  const choiceCard = characterData.map((character, key) => {
+      return (
+  <div className="col-sm-9 col-md-4" id="choiceCard" key={character.id}>
+    <div id="choiceContent">
+      <img src={character.statusImage}/>
+      <div id="choice-inner">
+        <span>{character.name}</span>
+        <div id="inputs">
+        {choices.map(choice => {
+            return (
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  key={choice}
+                  type="radio"
+                  value={choice}
+                  checked={this.state.userChoices[key] === choice}
+                  onChange={() => this.handleChange(choice, key)}
+                />
+                <label className="form-check-label" for={choice.toString()}>{choice}</label>
+              </div>
+            );
+        })}
+      </div>
+      </div>
+    </div>
+  </div>
+      );
+  });
+
+  const houseButtons = houses.map((house => {
+    return (
+      <div className="col-md-2 col-sm-3">
+        <button 
+          type="input" 
+          role="button" 
+          className="btn btn-link hvr-float-shadow" 
+          value="Lannister">
+            <i className="fas fa-shield-alt" id={house}/>
+            <p>{house}</p>
+        </button>
+      </div>
+    )
+  }));
+    return (
+      <div className="container" id="newUser">
+      <div className="row">
+          <h1>Swear Your Sword</h1>
+      </div>
+      <div className="form" onSubmit={this.addUser}>
+          <div className="row">
+              <div className="col-sm-12 col-md-6">
+                  <input 
+                      name="email"
+                      type="email" 
+                      className="form-control" 
+                      id="newUserEmail" 
+                      placeholder="Email" />
+              </div>
+              <div className="col-sm-12 col-md-6">
+                  <input 
+                  name="username"
+                  type="text" 
+                  className="form-control" 
+                  id="newUserName" 
+                  value={this.state.username}
+                  placeholder="Username" 
+                  onChange={this.updateInput}/>
+              </div>
+          </div>
+          <div className="row" id="loyaltyButton">
+            {houseButtons}
+          </div>
+          <div className="row">
+            {choiceCard}
+          </div>
+          <div className="row">
+            <button type="submit">Submit</button> 
+          </div>
+      </div>
+  </div>
+    )
+}
+}
+
+function newUser() {
     ReactDOM.render(
-      <ChoiceCard/>,
+      <NewUser/>,
     document.getElementById('root')
   )
 }
+
 
 
   </script>

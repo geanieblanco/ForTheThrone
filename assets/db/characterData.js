@@ -208,7 +208,7 @@ characterData = [{
     },
     {
         "id": 17,
-        "name": "Ser Robert Strong",
+        "name": "The Mountain",
         "cardName": "The Mountain",
         "bio": "The ressurected and grotesque remains of Ser Gregor Clegane aka The Mountain. Infamous across the world for his violent nature and love of torture.",
         "alive": true,
@@ -299,7 +299,7 @@ characterData = [{
     },
     {
         "id": 24,
-        "name": "Ser Bronn of the Blackwater",
+        "name": "Bronn of the Blackwater",
         "cardName": "Bronn",
         "bio": "Knighted sellsword to both Jaime and Tyrion Lannister. Fought for the Crown at both the Battle of Blackwater and the Loot Train battle.",
         "alive": true,
