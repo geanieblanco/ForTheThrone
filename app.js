@@ -49,6 +49,7 @@ Tyrion = ()=> db.collection("characters").doc("Tyrion");
 Yara = ()=> db.collection("characters").doc("Yara");
 
 characterData = [];
+userData= [];
 
 getCharacterData = ()=> {
     db.collection("characters").get().then(querySnapshot => {
@@ -58,5 +59,16 @@ getCharacterData = ()=> {
         });
 }
 
+getUserData = ()=> {
+    db.collection("users").get().then(querySnapshot => {
+            querySnapshot.docs.forEach(doc => {
+            userData.push(doc.data());
+            });
+        });
+}
+
+
+
+getUserData();
 getCharacterData();
 

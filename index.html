@@ -71,10 +71,7 @@
       super();
       this.state = { characters: characterData }
   }
-
     render() {   
-      
-      console.log(characterData); 
       const characterCard = this.state.characters.map((character, key) =>
       <div className="col-sm-6 col-md-3">
         <div className="card-flip">
@@ -92,7 +89,7 @@
               </div>
               <div className="card-body" id="content">
                 <div id="status">
-                  <span key={character.name}>{character.name}  </span>
+                  <span key={character.name}>{character.cardName}  </span>
                   <i className="fas fa-shield-alt" key={character.loyalty} id={character.loyalty.toString()}/>
                 </div>
                 </div>
@@ -138,7 +135,7 @@ class Leaderboard extends React.Component{
       <div className="jumbotron">
       <svg
           key={user.loyalty}
-          id={user.loyalty}
+          id={user.loyalty.toString()}
           width="200px"
           height="350px"
           viewBox="0 0 12 9"
@@ -234,30 +231,65 @@ function leaderboardPage() {
 
 
 class NewUser extends React.Component {
-  constructor(){
+  constructor(props){
     super()
-    this.state = { 
-      username: "",
-      email: "",
-      loyalty: "",
-      userChoices: [] }
+    this.state = {
+        formControls: {
+            email: {
+              value: ''
+            },
+            username: {
+              value: ''
+            }
+        },
+        userChoices: []
+    }
   }
 
-  handleChange = (choice, key) => {
+
+handleSubmit = ()=> {
+    db.collection("users")
+      .doc(this.state.formControls.username.value.toString())
+      .set({
+        name: this.state.formControls.username.value.toString(),
+        email: this.state.formControls.email.value.toString(),
+        choices: this.state.userChoices,
+        totalPoints: 0
+    });
+    console.log('====================================');
+    console.log(this.state);
+    console.log('====================================');
+    alert('Welcome to the Game');
+    form.reset();
+  }
+
+
+  handleUserChoice = (choice, key) => {
       this.setState(prevState => ({
           userChoices: { ...prevState.userChoices, [key]: choice }
       }));
+      console.log(this.state.formControls.username.value);
+      
   };
 
-
-// newUser = ()=> {
-//   userRef.doc(this.state.username.toString()).set({
-//     email: this.state.email;
-//     loyalty: this.state.loyalty;
-//   })
-// }
+  addNewUser = event => {
+    
+    const name = event.target.name;
+    const value = event.target.value;
+  
+    this.setState({
+      formControls: {
+          ...this.state.formControls,
+          [name]: {
+          ...this.state.formControls[name],
+          value
+        }
+      }
+    });
+}
 
 render() {
+
   const choices = [
       "Alive",
       "Dead",
@@ -275,21 +307,22 @@ render() {
   
   const choiceCard = characterData.map((character, key) => {
       return (
+  <div className="col-md-3 col-sm-6">
     <div id="choiceContent" key={character.id}>
       <img src={character.statusImage}/>
       <div id="choice-inner">
-        <span>{character.name}</span>
+        <span>{character.cardName}</span>
         <div id="inputs">
         {choices.map(choice => {
             return (
               <div className="form-check">
                 <input
                   className="form-check-input"
-                  key={choice}
+                  key={character.cardName}
                   type="radio"
                   value={choice}
-                  checked={this.state.userChoices[key] === choice}
-                  onChange={() => this.handleChange(choice, key)}
+                  checked={this.state.userChoices[character.cardName] === choice}
+                  onChange={() => this.handleUserChoice(choice, character.cardName)}
                 />
                 <label className="form-check-label" for={choice.toString()}>{choice}</label>
               </div>
@@ -298,47 +331,47 @@ render() {
       </div>
       </div>
     </div>
+    </div>
       );
   });
 
   const houseButtons = houses.map((house => {
     return (
-      <div className="col-md-2 col-sm-3">
+      <div className="col-md-2 col-sm-2">
         <button 
           type="input" 
           role="button" 
           className="btn btn-link hvr-float-shadow" 
-          value="Lannister">
+          value={house}>
             <i className="fas fa-shield-alt" id={house}/>
             <p>{house}</p>
         </button>
       </div>
     )
   }));
+
     return (
       <div className="container" id="newUser">
       <div className="row">
           <h1>Swear Your Sword</h1>
       </div>
-      <div className="form" onSubmit={this.addUser}>
+      <div className="form">
           <div className="row">
               <div className="col-sm-12 col-md-6">
-                  <input 
-                      name="email"
-                      type="email" 
-                      className="form-control" 
-                      id="newUserEmail" 
-                      placeholder="Email" />
+                <input
+                type="username" 
+                name="username" 
+                value={this.state.formControls.username.value} 
+                onChange={this.addNewUser} 
+                  />
               </div>
               <div className="col-sm-12 col-md-6">
-                  <input 
-                  name="username"
-                  type="text" 
-                  className="form-control" 
-                  id="newUserName" 
-                  value={this.state.username}
-                  placeholder="Username" 
-                  onChange={this.updateInput}/>
+                <input 
+                type="email" 
+                name="email" 
+                value={this.state.formControls.email.value} 
+                onChange={this.addNewUser} 
+                  />
               </div>
           </div>
           <div className="row" id="loyaltyButton">
@@ -348,7 +381,7 @@ render() {
             {choiceCard}
           </div>
           <div className="row">
-            <button type="submit">Submit</button> 
+            <button type="button" onClick={()=>{this.handleSubmit()}}>Submit</button> 
           </div>
       </div>
   </div>
