@@ -42,6 +42,34 @@ to {
 animation-name: fadeIn;
 }
 
+@mixin crownColors {
+    #Baratheon {
+        fill: $baratheon;
+    }
+    #Lannister {
+        fill: $lannister;
+    }
+    #Stark {
+        fill: $stark;
+    };
+    #Targaryen {
+        fill: $targaryen;
+    }
+    #Bannerless {
+        fill: $bannerless;
+    }
+    #Walker {
+        fill: $whiteWalker;
+    }
+}
+
+@mixin title {
+    text-align: center;
+    text-shadow: $titleShadow;
+    color: $grey;
+    font-family: $title;
+}
+
 @mixin loyaltyColors {
     #Baratheon {
         color: $baratheon;

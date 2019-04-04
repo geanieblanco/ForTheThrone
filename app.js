@@ -15,7 +15,7 @@ var db = firebase.firestore();
 
 //document references
 userRef = ()=> db.collection("users");
-CharacterData = ()=> db.collection("characters");
+characterRef = ()=> db.collection("characters");
 Arya = ()=> db.collection("characters").doc("Arya");
 Gendry = ()=> db.collection("characters").doc("Gendry");
 Brienne = ()=> db.collection("characters").doc("Brienne");
@@ -48,9 +48,15 @@ Theon = ()=> db.collection("characters").doc("Theon");
 Tyrion = ()=> db.collection("characters").doc("Tyrion");
 Yara = ()=> db.collection("characters").doc("Yara");
 
-// CharacterData().get().then(function(res){
-//     let characters = res.json();
-//     console.log(characters);
-// });
+characterData = [];
 
-// A N I M A T I O N S
+getCharacterData = ()=> {
+    db.collection("characters").get().then(querySnapshot => {
+            querySnapshot.docs.forEach(doc => {
+            characterData.push(doc.data());
+            });
+        });
+}
+
+getCharacterData();
+

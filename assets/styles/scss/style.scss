@@ -66,17 +66,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    #crown {
-        width: 350px;
-        height: 200px;
-        g {
-        fill: $targaryen;
-        }
-    }
     h2 {
         font-family: $title;
     }
 }
+
+svg {@include crownColors;}
 
 // CHARACTER STATUS
 #characterCard{
@@ -177,6 +172,16 @@ height: 100% !important;
 width: 100%;
 }
 
+#dead {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+#walker {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
 #newUser {
     @extend #selection;
     h1 { 
@@ -215,7 +220,7 @@ width: 100%;
     }
 }
 
-#choiceCard {
+
     #choiceContent {
     display: flex;
     flex-direction: row;
@@ -234,10 +239,10 @@ width: 100%;
                 font-family: $subtitle;
                 font-size: 12px;
                 text-transform: lowercase;
+                word-wrap: normal;
             }
             label {
-                font-family: $heading;
+                font-family: $body;
             }
         }
     }
-}

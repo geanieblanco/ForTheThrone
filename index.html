@@ -42,7 +42,7 @@
       <!-- main content //r react -->
       <!-- testing - NOTHING BEFORE 'root' -->
       <div class="col-md-9 col-sm-12 react-container">
-        <div id="root" class=""></div>
+        <div id="root" onload="getCharacters()"></div>
       </div>
     </div>
   </main>
@@ -57,48 +57,42 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
-  <script src="./app.js"></script>
+  <!-- <script src="./app.js"></script> -->
   <script src="./assets/pages/statusCard.js"></script>
   <!-- <script src="./assets/db/characterData.js"></script> -->
   <script type="text/babel">
-    require(["./assets/db/characterData.js"])
+    // require(["./assets/db/characterData.js"])
+    require(["./assets/db/userData.js"])
     require(["./app.js"])
       // Character Status Card  
 
   class StatusCard extends React.Component {
     constructor() {
       super();
-      this.state = { characters: characterData};
+      this.state = { characters: characterData }
   }
-    
-    render() {
-      console.log(this.state.characters)
-      // db.collection("characters").get().then(function(querySnapshot) {
-      //   querySnapshot.forEach(function(doc) {
-      //     let character = doc;
-      //     console.log(character.id, " => ", character.data());
-      //     this.setState({characters: [name:character.name, statusImage:character.statusImage, loyalty:character.loyalty]});
-      //     console.log(this.state.characters)
-      //   });
-      // });
 
-      const characterCard = characterData.map((character, key) =>
+    render() {   
+      
+      console.log(characterData); 
+      const characterCard = this.state.characters.map((character, key) =>
       <div className="col-sm-6 col-md-3">
         <div className="card-flip">
           <div className="flip">
             <div className="front">
               <div className="card" id="characterCard">
-              <div key={character.id} className="card-img-top" id={character.alive.toString()}>
+              <div key={character.id} className="card-img-top" id={character.status.toString()}>
                 <img
+                
                 key={character.statusImage}
                 src={character.statusImage}
-                alt="..."
+                alt={character.name}
                 className="img-fluid"
                 />
               </div>
               <div className="card-body" id="content">
                 <div id="status">
-                  <span key={character.cardName}>{character.cardName}  </span>
+                  <span key={character.name}>{character.name}  </span>
                   <i className="fas fa-shield-alt" key={character.loyalty} id={character.loyalty.toString()}/>
                 </div>
                 </div>
@@ -140,49 +134,53 @@
 // Leaderboard
 class Leaderboard extends React.Component{
   render() {
+    const crown = userData.map((user, key)=>
+      <div className="jumbotron">
+      <svg
+          key={user.loyalty}
+          id={user.loyalty}
+          width="200px"
+          height="350px"
+          viewBox="0 0 12 9"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
+          <g stroke="none" strokeWidth="{1}" fillRule="evenodd">
+            <g id="Group" fill="#1C1E1F">
+              <path
+                d="M0.5,4.325 C0.318,4.325 0.172,4.179 0.172,3.997 C0.172,3.815 0.318,3.669 0.5,3.669 C0.68,3.669 0.828,3.815 0.828,3.997 C0.828,4.179 0.68,4.325 0.5,4.325 Z"
+                id="Fill-12"
+              />
+              <path
+                d="M10.813,4.325 C10.632,4.325 10.485,4.179 10.485,3.997 C10.485,3.815 10.632,3.669 10.813,3.669 C10.994,3.669 11.141,3.815 11.141,3.997 C11.141,4.179 10.994,4.325 10.813,4.325 Z"
+                id="Fill-13"
+              />
+              <path
+                d="M2.649,2.935 C2.468,2.935 2.321,2.789 2.321,2.607 C2.321,2.426 2.468,2.279 2.649,2.279 C2.831,2.279 2.977,2.426 2.977,2.607 C2.977,2.789 2.831,2.935 2.649,2.935 Z"
+                id="Fill-14"
+              />
+              <path
+                d="M8.687,2.935 C8.505,2.935 8.359,2.789 8.359,2.607 C8.359,2.426 8.505,2.279 8.687,2.279 C8.867,2.279 9.015,2.426 9.015,2.607 C9.015,2.789 8.867,2.935 8.687,2.935 Z"
+                id="Fill-15"
+              />
+              <path
+                d="M5.578,1.154 C5.259,1.154 5.001,0.896 5.001,0.577 C5.001,0.258 5.259,0 5.578,0 C5.897,0 6.156,0.258 6.156,0.577 C6.156,0.896 5.897,1.154 5.578,1.154 Z"
+                id="Fill-16"
+              />
+              <path
+                d="M9.266,7.807 L9.46,7.313 L9.85,6.324 L10.045,5.83 L10.813,3.977 L8.465,5.83 L8.675,2.589 L6.998,5.602 L5.583,0.513 L4.221,5.435 L2.637,2.589 L2.847,5.83 L0.5,3.977 L1.267,5.83 L1.463,6.324 L1.852,7.313 L2.047,7.807 L2.238,8.293 C4.512,7.86 6.841,7.829 9.128,8.156 L9.266,7.807 Z"
+                id="Fill-17"
+              />
+            </g>
+          </g>
+        </svg>
+        <h2 key={user.name}>{user.name}</h2>
+      </div>
+    );
     return (
       <div className="leaderboard">
-        <div className="jumbotron">
-          <svg
-            id="crown"
-            width="12px"
-            height="9px"
-            viewBox="0 0 12 9"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-          >
-            <g stroke="none" strokeWidth="{1}" fillRule="evenodd">
-              <g id="Group" fill="#1C1E1F">
-                <path
-                  d="M0.5,4.325 C0.318,4.325 0.172,4.179 0.172,3.997 C0.172,3.815 0.318,3.669 0.5,3.669 C0.68,3.669 0.828,3.815 0.828,3.997 C0.828,4.179 0.68,4.325 0.5,4.325 Z"
-                  id="Fill-12"
-                />
-                <path
-                  d="M10.813,4.325 C10.632,4.325 10.485,4.179 10.485,3.997 C10.485,3.815 10.632,3.669 10.813,3.669 C10.994,3.669 11.141,3.815 11.141,3.997 C11.141,4.179 10.994,4.325 10.813,4.325 Z"
-                  id="Fill-13"
-                />
-                <path
-                  d="M2.649,2.935 C2.468,2.935 2.321,2.789 2.321,2.607 C2.321,2.426 2.468,2.279 2.649,2.279 C2.831,2.279 2.977,2.426 2.977,2.607 C2.977,2.789 2.831,2.935 2.649,2.935 Z"
-                  id="Fill-14"
-                />
-                <path
-                  d="M8.687,2.935 C8.505,2.935 8.359,2.789 8.359,2.607 C8.359,2.426 8.505,2.279 8.687,2.279 C8.867,2.279 9.015,2.426 9.015,2.607 C9.015,2.789 8.867,2.935 8.687,2.935 Z"
-                  id="Fill-15"
-                />
-                <path
-                  d="M5.578,1.154 C5.259,1.154 5.001,0.896 5.001,0.577 C5.001,0.258 5.259,0 5.578,0 C5.897,0 6.156,0.258 6.156,0.577 C6.156,0.896 5.897,1.154 5.578,1.154 Z"
-                  id="Fill-16"
-                />
-                <path
-                  d="M9.266,7.807 L9.46,7.313 L9.85,6.324 L10.045,5.83 L10.813,3.977 L8.465,5.83 L8.675,2.589 L6.998,5.602 L5.583,0.513 L4.221,5.435 L2.637,2.589 L2.847,5.83 L0.5,3.977 L1.267,5.83 L1.463,6.324 L1.852,7.313 L2.047,7.807 L2.238,8.293 C4.512,7.86 6.841,7.829 9.128,8.156 L9.266,7.807 Z"
-                  id="Fill-17"
-                />
-              </g>
-            </g>
-          </svg>
-          <h2>Leader</h2>
-        </div>
+        {crown}
         <div className="row">
           <div className="col-sm-12 col-md-12">
             <table className="table table-striped table-dark">
@@ -226,6 +224,7 @@ class Leaderboard extends React.Component{
   }
 };
 
+
 function leaderboardPage() {
   ReactDOM.render(
     <Leaderboard/>,
@@ -233,21 +232,6 @@ function leaderboardPage() {
   )
 }
 
-// class ChoiceCard extends React.Component {
-
-// render() {
-
-  
-
-// return (<div className="row"><NewUser/>{choiceCard}</div>)
-//   }
-// }
-
-// function makeChoice() {
-//   ReactDOM.render(
-//     <ChoiceCard/>,
-//   document.getElementById('root')
-// )}
 
 class NewUser extends React.Component {
   constructor(){
@@ -291,15 +275,14 @@ render() {
   
   const choiceCard = characterData.map((character, key) => {
       return (
-  <div className="col-sm-9 col-md-4" id="choiceCard" key={character.id}>
-    <div id="choiceContent">
+    <div id="choiceContent" key={character.id}>
       <img src={character.statusImage}/>
       <div id="choice-inner">
         <span>{character.name}</span>
         <div id="inputs">
         {choices.map(choice => {
             return (
-              <div className="form-check form-check-inline">
+              <div className="form-check">
                 <input
                   className="form-check-input"
                   key={choice}
@@ -315,7 +298,6 @@ render() {
       </div>
       </div>
     </div>
-  </div>
       );
   });
 

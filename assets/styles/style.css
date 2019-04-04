@@ -12,7 +12,7 @@
 }
 @font-face {
   font-family: "Hamburger_Schwabacher";
-  src: url("../Hamburger_Schwabacher.ttf") format("truetype");
+  src: url("../fonts/Hamburger_Schwabacher.ttf") format("truetype");
 }
 @-webkit-keyframes fadeIn {
   from {
@@ -104,15 +104,27 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.jumbotron #crown {
-  width: 350px;
-  height: 200px;
-}
-.jumbotron #crown g {
-  fill: #8D0000;
-}
 .jumbotron h2 {
   font-family: "GameofThrones";
+}
+
+svg #Baratheon {
+  fill: #D4AA00;
+}
+svg #Lannister {
+  fill: #D96300;
+}
+svg #Stark {
+  fill: #D7DADB;
+}
+svg #Targaryen {
+  fill: #8D0000;
+}
+svg #Bannerless {
+  fill: #659B73;
+}
+svg #Walker {
+  fill: #CFF3FF;
 }
 
 #characterCard {
@@ -234,6 +246,16 @@ body {
   width: 100%;
 }
 
+#dead {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+#walker {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
 #newUser h1 {
   text-align: center;
   text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e, 0 10px 0 #1c1c1c, 0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414, 0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
@@ -292,27 +314,28 @@ body {
   color: black;
 }
 
-#choiceCard #choiceContent {
+#choiceContent {
   display: flex;
   flex-direction: row;
   background-color: #9b9494;
   border-radius: 10px;
   margin-top: 5px;
 }
-#choiceCard #choiceContent img {
+#choiceContent img {
   height: 120px;
   min-width: 100px;
   max-width: 100px;
   border-radius: 10px 0px 0px 10px;
   padding: 2px;
 }
-#choiceCard #choiceContent #choice-inner span {
+#choiceContent #choice-inner span {
   font-family: "TrajanusBricks";
   font-size: 12px;
   text-transform: lowercase;
+  word-wrap: normal;
 }
-#choiceCard #choiceContent #choice-inner label {
-  font-family: "Hamburger_Schwabacher";
+#choiceContent #choice-inner label {
+  font-family: "AppleGaramond";
 }
 
 /*# sourceMappingURL=style.css.map */
