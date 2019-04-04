@@ -242,7 +242,10 @@ class NewUser extends React.Component {
               value: ''
             }
         },
-        userChoices: []
+        userChoices: [],
+        loyalty: {
+          value: ''
+        }
     }
   }
 
@@ -254,6 +257,7 @@ handleSubmit = ()=> {
         name: this.state.formControls.username.value.toString(),
         email: this.state.formControls.email.value.toString(),
         choices: this.state.userChoices,
+        loyalty: this.state.loyalty,
         totalPoints: 0
     });
     console.log('====================================');
@@ -265,12 +269,19 @@ handleSubmit = ()=> {
 
 
   handleUserChoice = (choice, key) => {
-      this.setState(prevState => ({
+      this.setState(
+        prevState => ({
           userChoices: { ...prevState.userChoices, [key]: choice }
       }));
-      console.log(this.state.formControls.username.value);
-      
   };
+
+  handleUserLoyalty = (e) => {
+    this.setState(
+      { loyalty: e.target.id },() => {
+    console.log(this.state.loyalty)
+  });
+}
+
 
   addNewUser = event => {
     
@@ -296,15 +307,6 @@ render() {
       "Walker"
   ]
 
-  const houses = [
-    "Lannister",
-    "Baratheon",
-    "Targaryen",
-    "Stark",
-    "Bannerless",
-    "Walker"
-  ]
-  
   const choiceCard = characterData.map((character, key) => {
       return (
   <div className="col-md-3 col-sm-6">
@@ -335,14 +337,24 @@ render() {
       );
   });
 
+  const houses = [
+    "Lannister",
+    "Baratheon",
+    "Targaryen",
+    "Stark",
+    "Bannerless",
+    "Walker"
+  ]
+  
   const houseButtons = houses.map((house => {
     return (
       <div className="col-md-2 col-sm-2">
-        <button 
+        <button
+          key={house}
           type="input" 
-          role="button" 
           className="btn btn-link hvr-float-shadow" 
-          value={house}>
+          id={house}
+          onClick={this.handleUserLoyalty}>
             <i className="fas fa-shield-alt" id={house}/>
             <p>{house}</p>
         </button>
@@ -360,7 +372,8 @@ render() {
               <div className="col-sm-12 col-md-6">
                 <input
                 type="username" 
-                name="username" 
+                name="username"
+                placeholder="Username"
                 value={this.state.formControls.username.value} 
                 onChange={this.addNewUser} 
                   />
@@ -369,6 +382,7 @@ render() {
                 <input 
                 type="email" 
                 name="email" 
+                placeholder="Email Address"
                 value={this.state.formControls.email.value} 
                 onChange={this.addNewUser} 
                   />
