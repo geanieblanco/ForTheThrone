@@ -135,7 +135,7 @@ class Leaderboard extends React.Component{
       <div className="jumbotron">
       <svg
           key={user.loyalty}
-          id={user.loyalty.toString()}
+          id={user.loyalty}
           width="200px"
           height="350px"
           viewBox="0 0 12 9"
@@ -144,7 +144,7 @@ class Leaderboard extends React.Component{
           xmlnsXlink="http://www.w3.org/1999/xlink"
         >
           <g stroke="none" strokeWidth="{1}" fillRule="evenodd">
-            <g id="Group" fill="#1C1E1F">
+            <g id="Group">
               <path
                 d="M0.5,4.325 C0.318,4.325 0.172,4.179 0.172,3.997 C0.172,3.815 0.318,3.669 0.5,3.669 C0.68,3.669 0.828,3.815 0.828,3.997 C0.828,4.179 0.68,4.325 0.5,4.325 Z"
                 id="Fill-12"
@@ -175,6 +175,15 @@ class Leaderboard extends React.Component{
         <h2 key={user.name}>{user.name}</h2>
       </div>
     );
+
+    const table = userData.map((user,key)=>
+      <tr key={user.id}>
+        <td key={user.name}>{user.name}</td>
+        <td key={user.correctGuesses}>{user.correctGuesses}</td>
+        <td key={user.incorrectGuesses}>{user.incorrectGuesses}</td>
+        <td key={user.totalPoints}>{user.totalPoints}</td>
+      </tr>
+    );
     return (
       <div className="leaderboard">
         {crown}
@@ -183,35 +192,14 @@ class Leaderboard extends React.Component{
             <table className="table table-striped table-dark">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
                   <th scope="col">Name</th>
-                  <th scope="col">Correct Deaths</th>
-                  <th scope="col">Correct White Walker</th>
+                  <th scope="col">Correct Guesses</th>
+                  <th scope="col">Incorrect Guesses</th>
                   <th scope="col">Total Points</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>35</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>1</td>
-                  <td>0</td>
-                  <td>5</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>2</td>
-                  <td>1</td>
-                  <td>15</td>
-                </tr>
+                {table}
               </tbody>
             </table>
           </div>
@@ -258,7 +246,9 @@ handleSubmit = ()=> {
         email: this.state.formControls.email.value.toString(),
         choices: this.state.userChoices,
         loyalty: this.state.loyalty,
-        totalPoints: 0
+        totalPoints: 0,
+        correctGuesses: 0,
+        incorrectGuesses: 0
     });
     console.log('====================================');
     console.log(this.state);

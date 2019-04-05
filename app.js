@@ -67,8 +67,17 @@ getUserData = ()=> {
         });
 }
 
+getLeaderboardData = ()=> {
+    db.collection("users").orderBy("totalPoints").get().then(querySnapshot => {
+        querySnapshot.docs.forEach(doc => {
+            userData.push(doc.data());
+        })
+    })
+}
 
 
-getUserData();
+
+
+// getLeaderboardData();
 getCharacterData();
-
+getUserData();
