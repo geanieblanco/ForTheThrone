@@ -324,6 +324,11 @@ svg #Walker {
   align-items: center;
 }
 
+#loyaltyButton {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 #loyaltyButton button {
   text-decoration: none;
   font-size: 15px;
@@ -372,6 +377,9 @@ svg #Walker {
   border-radius: 10px;
   margin-top: 5px;
 }
+#choiceContent #choice-button {
+  margin-left: 4px;
+}
 #choiceContent img {
   height: 120px;
   min-width: 100px;
@@ -387,6 +395,15 @@ svg #Walker {
 }
 #choiceContent #choice-inner label {
   font-family: "AppleGaramond";
+}
+
+#submitbutton {
+  margin-top: 10px;
+  background-color: #4D4D4D;
+  color: #F0F4F5;
+  border: none;
+  border-radius: 5px;
+  font-family: "TrajanusBricks";
 }
 
 @media only screen and (max-width: 770px) {

@@ -269,6 +269,9 @@ svg {
 
 //my picks
 #loyaltyButton {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     button {
         text-decoration: none;
         font-size: 15px;
@@ -295,7 +298,9 @@ svg {
     background-color: $grey;
     border-radius: 10px;
     margin-top: 5px;
-
+    #choice-button {
+        margin-left: 4px;
+    }
     img {
         height: 120px;
         min-width: 100px;
@@ -316,6 +321,15 @@ svg {
             font-family: $body;
         }
     }
+}
+
+#submitbutton {
+    margin-top: 10px;
+    background-color: $black;
+    color: $white;
+    border: none;
+    border-radius: 5px;
+    font-family: $subtitle;
 }
 
 @media only screen and (max-width: 770px) {

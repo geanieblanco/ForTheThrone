@@ -24,7 +24,7 @@
 
 
 <body>
-    <div class="modal" tabindex="-1" role="dialog" id="launchmodal">
+    <div class="modal" tabindex="-1" role="dialog" id="launchmodal" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-body">
@@ -91,7 +91,7 @@
   <!-- <script src="./assets/db/characterData.js"></script> -->
   <script type="text/babel">
     // require(["./assets/db/characterData.js"])
-    require(["./assets/db/userData.js"])
+    // require(["./assets/db/userData.js"])
     require(["./app.js"])
       // Character Status Card  
 
@@ -152,8 +152,12 @@
 
 // Leaderboard
 class Leaderboard extends React.Component{
+  constructor() {
+      super();
+      this.state = { leaders: leaderboard }
+  }
   render() {
-    const crown = userData.map((user, key)=>
+    const crown = leader.map((user, key)=>
       <div className="jumbotron">
       <svg
           key={user.loyalty}
@@ -198,7 +202,7 @@ class Leaderboard extends React.Component{
       </div>
     );
 
-    const table = userData.map((user,key)=>
+    const table = leaderboard.map((user,key)=>
       <tr key={user.id}>
         <td key={user.name}>{user.name}</td>
         <td key={user.correctGuesses}>{user.correctGuesses}</td>
@@ -330,7 +334,7 @@ render() {
         <div id="inputs">
         {choices.map(choice => {
             return (
-              <div className="form-check">
+              <div className="form-check" id="choice-button">
                 <input
                   className="form-check-input"
                   key={character.cardName}
@@ -361,7 +365,7 @@ render() {
   
   const houseButtons = houses.map((house => {
     return (
-      <div>
+      <div className="col-md-2 col-sm-3">
         <button
           key={house}
           type="input" 
@@ -411,7 +415,9 @@ render() {
             {choiceCard}
           </div>
           <div className="row">
-            <button type="button" onClick={()=>{this.handleSubmit()}}>Submit</button> 
+            <div className="col-md-3 col-sm-0"></div>
+            <button type="button" className="col-md-6 col-sm-12" id="submitbutton" onClick={()=>{this.handleSubmit()}}>by the old gods and the new</button> 
+            <div className="col-md-3 col-sm-0"></div>
           </div>
       </div>
   </div>

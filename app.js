@@ -50,6 +50,8 @@ Yara = ()=> db.collection("characters").doc("Yara");
 
 characterData = [];
 userData= [];
+leaderboard = [];
+leader = [];
 
 getCharacterData = ()=> {
     db.collection("characters").get().then(querySnapshot => {
@@ -67,19 +69,37 @@ getUserData = ()=> {
         });
 }
 
-getLeaderboardData = ()=> {
+getLeaderData = ()=> {
+    db.collection("users").orderBy("totalPoints").limit(1).get().then(querySnapshot => {
+        querySnapshot.docs.forEach(doc => {
+            leader.push(doc.data());
+        })
+    })
+}
+
+getLeaderData = ()=> {
+    db.collection("users").orderBy("totalPoints").limit(1).get().then(querySnapshot => {
+        querySnapshot.docs.forEach(doc => {
+            leader.push(doc.data());
+        })
+    })
+}
+
+getBoardData = ()=> {
     db.collection("users").orderBy("totalPoints").get().then(querySnapshot => {
         querySnapshot.docs.forEach(doc => {
-            userData.push(doc.data());
+            leaderboard.push(doc.data());
         })
     })
 }
 
 getCharacterData();
 getUserData();
+// getLeaderData();
+getBoardData();
+
 
 
 $(window).ready(function () {
-    $('#launchmodal').modal('show');
+    $('#launchmodal').modal('show', {backdrop: 'static', keyboard: false});
 });
-// getLeaderboardData();
