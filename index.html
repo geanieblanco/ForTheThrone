@@ -37,10 +37,10 @@
           </div>
         </div>
       </div>
-    <nav class="navbar navbar-dark bg-dark" id="mobilenav">
+    <nav class="navbar" id="mobilenav">
         <span class="navbar-brand">for the throne</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
@@ -62,7 +62,7 @@
               <span class="display-4">Throne</span>
             </h1>
             <div id="buttons">
-              <button type="input" role="button" class="btn-lg btn-block" onclick="leaderboardPage()">leaderboard</button>
+              <button type="input" role="button" class="btn-lg btn-block" onclick="leaderboardPage()">the wheel</button>
               <button type="input" role="button" class="btn-lg btn-block" onclick="getCharacters()">the players</button>
               <button type="input" role="button" class="btn-lg btn-block" onclick="newUser()">swear it</button>
             </div>
@@ -365,7 +365,7 @@ render() {
   
   const houseButtons = houses.map((house => {
     return (
-      <div className="col-md-2 col-sm-3">
+      <div>
         <button
           key={house}
           type="input" 
@@ -383,6 +383,9 @@ render() {
       <div className="container" id="newUser">
       <div className="row">
           <h1>Swear Your Sword</h1>
+      </div>
+      <div className="row">
+        <p id="rules">Rules: You'll receive 5 points for each correct guess. If a character becomes a Walker and then is killed, users who guessed "dead" will receive 3 points.</p>
       </div>
       <div className="form">
     

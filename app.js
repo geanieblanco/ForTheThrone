@@ -95,8 +95,10 @@ getBoardData = ()=> {
 
 getCharacterData();
 getUserData();
-// getLeaderData();
 getBoardData();
+
+// getLeaderData();
+
 
 
 

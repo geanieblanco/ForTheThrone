@@ -370,6 +370,11 @@ svg #Walker {
   color: black;
 }
 
+#rules {
+  margin-top: 15px;
+  font-family: "AppleGaramond";
+}
+
 #choiceContent {
   display: flex;
   flex-direction: row;
@@ -417,6 +422,108 @@ svg #Walker {
 
   #main {
     margin-top: 0px;
+  }
+
+  #loyaltyButton {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  #loyaltyButton button {
+    text-decoration: none;
+    font-size: 15px;
+  }
+  #loyaltyButton button:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  #loyaltyButton i {
+    padding: 5px;
+    font-size: 45px;
+    text-align: center;
+  }
+  #loyaltyButton #Baratheon {
+    color: #D4AA00;
+    text-shadow: #4D4D4D 1px 1px 0;
+  }
+  #loyaltyButton #Lannister {
+    color: #D96300;
+    text-shadow: #e0e0e0 1px 1px 0;
+  }
+  #loyaltyButton #Stark {
+    color: #D7DADB;
+    text-shadow: #4D4D4D 1px 1px 0;
+  }
+  #loyaltyButton #Targaryen {
+    color: #8D0000;
+    text-shadow: #e0e0e0 1px 1px 0;
+  }
+  #loyaltyButton #Bannerless {
+    color: #659B73;
+    text-shadow: #e0e0e0 1px 1px 0;
+  }
+  #loyaltyButton #Walker {
+    color: #CFF3FF;
+    text-shadow: #4D4D4D 1px 1px 0;
+  }
+  #loyaltyButton p {
+    font-family: "GameofThrones";
+    font-size: 10px;
+    color: black;
+  }
+
+  #choiceContent {
+    display: flex;
+    flex-direction: row;
+    background-color: #9b9494;
+    border-radius: 10px;
+    margin-top: 5px;
+  }
+  #choiceContent #choice-button {
+    margin-left: 4px;
+  }
+  #choiceContent img {
+    height: 120px;
+    min-width: 100px;
+    max-width: 100px;
+    border-radius: 10px 0px 0px 10px;
+    padding: 2px;
+  }
+  #choiceContent #choice-inner span {
+    font-family: "TrajanusBricks";
+    font-size: 12px;
+    text-transform: lowercase;
+    word-wrap: normal;
+  }
+  #choiceContent #choice-inner label {
+    font-family: "AppleGaramond";
+  }
+
+  #submitbutton {
+    margin-top: 10px;
+    background-color: #4D4D4D;
+    color: #F0F4F5;
+    border: none;
+    border-radius: 5px;
+    font-family: "TrajanusBricks";
+    font-size: 15px;
+  }
+
+  #mobilenav {
+    background-color: #4D4D4D;
+  }
+  #mobilenav span {
+    font-family: "GameofThrones";
+    font-size: 20px;
+    color: #F0F4F5;
+  }
+  #mobilenav button {
+    font-family: "TrajanusBricks";
+    color: #F0F4F5;
+  }
+  #mobilenav .navbar-toggler {
+    color: #F0F4F5;
   }
 }
 

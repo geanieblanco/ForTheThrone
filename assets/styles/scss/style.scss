@@ -291,6 +291,10 @@ svg {
     }
 }
 
+#rules {
+    margin-top: 15px;
+    font-family: $body;
+}
 
 #choiceContent {
     display: flex;
@@ -343,5 +347,88 @@ svg {
 
     #main {
         margin-top: 0px;
+    }
+
+    #loyaltyButton {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        button {
+            text-decoration: none;
+            font-size: 15px;
+            &:hover {
+                -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+            }
+        }
+        i {
+            padding: 5px;
+            font-size: 45px;
+            text-align: center;
+        }
+        @include loyaltyColors;
+        p {
+            font-family: $title;
+            font-size: 10px;
+            color: black;
+        }
+    }
+
+    #choiceContent {
+        display: flex;
+        flex-direction: row;
+        background-color: $grey;
+        border-radius: 10px;
+        margin-top: 5px;
+        #choice-button {
+            margin-left: 4px;
+        }
+        img {
+            height: 120px;
+            min-width: 100px;
+            max-width: 100px;
+            border-radius: 10px 0px 0px 10px;
+            padding: 2px;
+        }
+    
+        #choice-inner {
+            span {
+                font-family: $subtitle;
+                font-size: 12px;
+                text-transform: lowercase;
+                word-wrap: normal;
+            }
+    
+            label {
+                font-family: $body;
+            }
+        }
+    }
+
+    #submitbutton {
+        margin-top: 10px;
+        background-color: $black;
+        color: $white;
+        border: none;
+        border-radius: 5px;
+        font-family: $subtitle;
+        font-size: 15px;
+    }
+
+    #mobilenav {
+        background-color: $black;
+        span {
+            font-family: $title;
+            font-size: 20px;
+            color: $white;
+        }
+        button {
+            font-family: $subtitle;
+            color: $white;
+        }
+        .navbar-toggler {
+            color: $white;
+        }
     }
 }
