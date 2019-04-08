@@ -201,7 +201,7 @@ svg #Walker {
 }
 #content #Lannister {
   color: #D96300;
-  text-shadow: #e0e0e0 1px 1px 0;
+  text-shadow: #4D4D4D 1px 1px 0;
 }
 #content #Stark {
   color: #D7DADB;
@@ -209,11 +209,11 @@ svg #Walker {
 }
 #content #Targaryen {
   color: #8D0000;
-  text-shadow: #e0e0e0 1px 1px 0;
+  text-shadow: #4D4D4D 1px 1px 0;
 }
 #content #Bannerless {
   color: #659B73;
-  text-shadow: #e0e0e0 1px 1px 0;
+  text-shadow: #4D4D4D 1px 1px 0;
 }
 #content #Walker {
   color: #CFF3FF;
@@ -305,6 +305,10 @@ svg #Walker {
   margin: 15px;
   letter-spacing: 4px;
 }
+#newUser h3 {
+  margin-top: 20px;
+  font-family: "TrajanusBricks";
+}
 
 #userInput {
   width: 100%;
@@ -347,7 +351,7 @@ svg #Walker {
 }
 #loyaltyButton #Lannister {
   color: #D96300;
-  text-shadow: #e0e0e0 1px 1px 0;
+  text-shadow: #4D4D4D 1px 1px 0;
 }
 #loyaltyButton #Stark {
   color: #D7DADB;
@@ -355,11 +359,11 @@ svg #Walker {
 }
 #loyaltyButton #Targaryen {
   color: #8D0000;
-  text-shadow: #e0e0e0 1px 1px 0;
+  text-shadow: #4D4D4D 1px 1px 0;
 }
 #loyaltyButton #Bannerless {
   color: #659B73;
-  text-shadow: #e0e0e0 1px 1px 0;
+  text-shadow: #4D4D4D 1px 1px 0;
 }
 #loyaltyButton #Walker {
   color: #CFF3FF;
@@ -404,6 +408,7 @@ svg #Walker {
 
 #submitbutton {
   margin-top: 10px;
+  font-size: 15px;
   background-color: #4D4D4D;
   color: #F0F4F5;
   border: none;
@@ -443,34 +448,35 @@ svg #Walker {
     font-size: 45px;
     text-align: center;
   }
-  #loyaltyButton #Baratheon {
+  #loyaltyButton i #Baratheon {
     color: #D4AA00;
     text-shadow: #4D4D4D 1px 1px 0;
   }
-  #loyaltyButton #Lannister {
+  #loyaltyButton i #Lannister {
     color: #D96300;
-    text-shadow: #e0e0e0 1px 1px 0;
+    text-shadow: #4D4D4D 1px 1px 0;
   }
-  #loyaltyButton #Stark {
+  #loyaltyButton i #Stark {
     color: #D7DADB;
     text-shadow: #4D4D4D 1px 1px 0;
   }
-  #loyaltyButton #Targaryen {
+  #loyaltyButton i #Targaryen {
     color: #8D0000;
-    text-shadow: #e0e0e0 1px 1px 0;
+    text-shadow: #4D4D4D 1px 1px 0;
   }
-  #loyaltyButton #Bannerless {
+  #loyaltyButton i #Bannerless {
     color: #659B73;
-    text-shadow: #e0e0e0 1px 1px 0;
+    text-shadow: #4D4D4D 1px 1px 0;
   }
-  #loyaltyButton #Walker {
+  #loyaltyButton i #Walker {
     color: #CFF3FF;
     text-shadow: #4D4D4D 1px 1px 0;
   }
   #loyaltyButton p {
     font-family: "GameofThrones";
-    font-size: 10px;
+    font-size: 8px;
     color: black;
+    text-shadow: none !important;
   }
 
   #choiceContent {
