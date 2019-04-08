@@ -341,6 +341,14 @@ svg #Walker {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+#loyaltyButton button:visited {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+#loyaltyButton button:focus {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
 #loyaltyButton i {
   padding: 5px;
   font-size: 50px;
