@@ -75,9 +75,9 @@ getLeaderboardData = ()=> {
     })
 }
 
-
-
-
+$(window).ready(function () {
+    $('#launchmodal').modal('show');
+});
 // getLeaderboardData();
 getCharacterData();
 getUserData();

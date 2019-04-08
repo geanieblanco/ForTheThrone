@@ -35,6 +35,36 @@
   animation-name: fadeIn;
 }
 
+.modal {
+  background-color: #4D4D4D;
+  height: 100vh !important;
+  width: 100vw !important;
+  border: none !important;
+}
+.modal .modal-body, .modal .modal-content {
+  background-color: #4D4D4D;
+  border: none !important;
+  margin-top: 30%;
+  align-items: center;
+}
+.modal .modal-body h1, .modal .modal-content h1 {
+  text-align: center;
+  text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e, 0 10px 0 #1c1c1c, 0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414, 0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
+  color: #9b9494;
+  font-family: "GameofThrones";
+}
+.modal .modal-body #buttons, .modal .modal-content #buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-family: "TrajanusBricks";
+  margin-top: 25px;
+}
+.modal .modal-body #buttons button, .modal .modal-content #buttons button {
+  border: none;
+  background-color: #9b9494;
+}
+
 html {
   background-color: #F0F4F5;
   -ms-overflow-style: none;
@@ -50,6 +80,8 @@ button {
 
 body {
   background-color: #F0F4F5;
+  display: flex;
+  flex-direction: column;
 }
 
 .react-container {
@@ -57,9 +89,18 @@ body {
   justify-content: center;
 }
 
+#main {
+  margin-top: -55px;
+}
+
+nav {
+  visibility: hidden;
+}
+
 #sidebar {
   background-color: #4D4D4D;
   min-height: 100%;
+  widows: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,6 +176,8 @@ svg #Walker {
   flex-direction: column;
   border-radius: 5px;
   border: none;
+  width: 100%;
+  margin: 0px;
 }
 #characterCard #false {
   -webkit-filter: grayscale(100%);
@@ -205,45 +248,43 @@ svg #Walker {
 }
 
 .card {
-  width: 100%;
-  height: 260px;
+  background-color: #F0F4F5;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.card-flip:hover .flip, .card-flip.hover .flip {
-  transform: rotateY(180deg);
-}
-
-.card-flip,
-.front,
-.back {
-  width: 100%;
-  height: 360px;
-  margin: 0px;
-}
-
-.flip {
-  transition: 0.6s;
-  transform-style: preserve-3d;
-  position: relative;
-}
-
-.front,
-.back {
+.card-flip > div {
   backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
+  transition: 0.6s;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
 }
 
-.front {
-  z-index: 2;
+.card-front {
   transform: rotateY(0deg);
-}
-
-.back {
-  transform: rotateY(180deg);
+  z-index: 2;
   height: 100% !important;
   width: 100%;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0;
+  height: 100% !important;
+  width: 100%;
+}
+
+.card-flip:hover .card-front {
+  transform: rotateY(180deg);
+  visibility: hidden;
+}
+
+.card-flip:hover .card-back {
+  transform: rotateY(0deg);
+  visibility: visible;
 }
 
 #dead {
@@ -263,6 +304,16 @@ svg #Walker {
   font-family: "GameofThrones";
   margin: 15px;
   letter-spacing: 4px;
+}
+
+#userInput {
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #9b9494;
+  color: #F0F4F5;
+  padding: 5px;
 }
 
 #selection, #newUser {
@@ -336,6 +387,20 @@ svg #Walker {
 }
 #choiceContent #choice-inner label {
   font-family: "AppleGaramond";
+}
+
+@media only screen and (max-width: 770px) {
+  #mobilenav {
+    visibility: visible !important;
+  }
+
+  #sidebar {
+    visibility: hidden;
+  }
+
+  #main {
+    margin-top: 0px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

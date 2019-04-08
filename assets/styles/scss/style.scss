@@ -1,19 +1,52 @@
 @import '_variables';
 @import '_mixins';
 
-html {
-    background-color: $white;
-    -ms-overflow-style: none;  // IE 10+
-    scrollbar-width: none;  // Firefox
-    &:-webkit-scrollbar { 
-        display: none;  // Safari and Chrome
+
+.modal {
+    background-color: $black;
+    height: 100vh !important;
+    width: 100vw !important;
+    border: none !important;
+    .modal-body, .modal-content {
+        background-color: $black;
+        border: none !important;
+        margin-top: 30%;
+        align-items: center;
+        h1 {
+            @include title;
+        }
+        #buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            font-family: $subtitle;
+            margin-top: 25px;
+            button {
+                border: none;
+                background-color: $grey;
+            }
+        }
     }
 }
 
-button { text-decoration: none;}
+html {
+    background-color: $white;
+    -ms-overflow-style: none; // IE 10+
+    scrollbar-width: none; // Firefox
+
+    &:-webkit-scrollbar {
+        display: none; // Safari and Chrome
+    }
+}
+
+button {
+    text-decoration: none;
+}
 
 body {
     background-color: $white;
+    display: flex;
+    flex-direction: column;
 }
 
 .react-container {
@@ -21,15 +54,25 @@ body {
     justify-content: center;
 }
 
+#main {
+    margin-top: -55px;
+}
+
+nav {
+    visibility: hidden;
+}
+
 #sidebar {
     // @include shadow;
     background-color: $black;
     min-height: 100%;
+    widows: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: fixed;
+
     h1 {
         display: flex;
         flex-direction: column;
@@ -38,10 +81,12 @@ body {
         max-width: 100%;
         margin: 10px;
         @include title;
+
         span {
             margin-top: 15px;
         }
     }
+
     button {
         border-radius: 0;
         margin-top: 20px;
@@ -49,8 +94,9 @@ body {
         background-color: $grey !important;
         border: none;
         font-family: $subtitle;
+
         // @include buttonShadow;
-        &:active{
+        &:active {
             @include buttonInset;
         }
     }
@@ -66,16 +112,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     h2 {
         font-family: $title;
     }
 }
 
-svg {@include crownColors;}
+svg {
+    @include crownColors;
+}
 
 // CHARACTER STATUS
-#characterCard{
-    margin: 10px;   
+#characterCard {
+    margin: 10px;
     background-color: $grey;
     display: flex;
     align-items: center;
@@ -83,93 +132,99 @@ svg {@include crownColors;}
     flex-direction: column;
     border-radius: 5px;
     border: none;
+    width: 100%;
+    margin: 0px;
+
     #false {
-        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        -webkit-filter: grayscale(100%);
+        /* Safari 6.0 - 9.0 */
         filter: grayscale(100%);
     }
-    img{
+
+    img {
         width: 100%;
         height: 100%;
         border-radius: 5px 5px 0px 0px;
     }
+}
+
+#content {
+    justify-content: center;
+    flex-direction: row;
+    padding: 3px;
+    @include loyaltyColors;
+
+    span {
+        font-family: $subtitle;
+        font-size: 13px;
+        text-transform: lowercase;
     }
-    #content {
-        justify-content: center;
-        flex-direction: row;
+
+    p {
+        font-family: $body;
         padding: 3px;
-        @include loyaltyColors;
-        span { 
-            font-family: $subtitle;
-            font-size: 13px;
-            text-transform: lowercase;
-        }
-        p {
-            font-family: $body;
-            padding: 3px;
-            line-height: 17px;
-        }
-        h5 {
-            padding-top: 10px;
-            font-family: $subtitle;
-            font-size: 17px;
-            text-align: center;
-            text-transform: lowercase;
-        }
-        h6 {
-            font-family: $heading;
-            text-align: center;
-            color: $white;
-        }
-        #status {
-            margin-top: 4px;
-            display: flex;
-            flex-direction: row;
-        }
+        line-height: 17px;
     }
+
+    h5 {
+        padding-top: 10px;
+        font-family: $subtitle;
+        font-size: 17px;
+        text-align: center;
+        text-transform: lowercase;
+    }
+
+    h6 {
+        font-family: $heading;
+        text-align: center;
+        color: $white;
+    }
+
+    #status {
+        margin-top: 4px;
+        display: flex;
+        flex-direction: row;
+    }
+}
+
 .card {
-    width: 100%;
-    height: 260px;
+    background-color: $white;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-//
-.card-flip {
-    &:hover .flip,
-    &.hover .flip {
+.card-flip>div {
+    backface-visibility: hidden;
+    transition: 0.6s;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.card-front {
+    transform: rotateY(0deg);
+    z-index: 2;
+    height: 100% !important;
+    width: 100%;
+}
+
+.card-back {
     transform: rotateY(180deg);
-}
-}
-
-.card-flip,
-.front,
-.back {
+    position: absolute;
+    top: 0;
+    height: 100% !important;
     width: 100%;
-    height: 360px;;
-    margin: 0px;
 }
 
-.flip {
-transition: 0.6s;
-transform-style: preserve-3d;
-position: relative;
+.card-flip:hover .card-front {
+    transform: rotateY(180deg);
+    visibility: hidden;
 }
 
-.front,
-.back {
-backface-visibility: hidden;
-position: absolute;
-top: 0;
-left: 0;
-}
-
-.front {
-z-index: 2;
-transform: rotateY(0deg);
-}
-
-.back {
-transform: rotateY(180deg);
-height: 100% !important;
-width: 100%;
+.card-flip:hover .card-back {
+    transform: rotateY(0deg);
+    visibility: visible;
 }
 
 #dead {
@@ -182,19 +237,32 @@ width: 100%;
     filter: grayscale(100%);
 }
 
+
+//New User
 #newUser {
     @extend #selection;
-    h1 { 
+
+    h1 {
         @include title;
         margin: 15px;
         letter-spacing: 4px;
     }
 }
 
+#userInput {
+    width: 100%;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: $grey;
+    color: $white;
+    padding: 5px;
+}
+
 #selection {
     display: flex;
     flex-direction: column;
-    margin-top:40px;
+    margin-top: 40px;
     margin-bottom: 40px;
     align-items: center;
 }
@@ -204,12 +272,12 @@ width: 100%;
     button {
         text-decoration: none;
         font-size: 15px;
-        &:hover{
+        &:hover {
             -webkit-transform: scale(1.1);
             transform: scale(1.1);
         }
     }
-    i { 
+    i {
         padding: 5px;
         font-size: 50px;
     }
@@ -221,28 +289,45 @@ width: 100%;
 }
 
 
-    #choiceContent {
+#choiceContent {
     display: flex;
     flex-direction: row;
     background-color: $grey;
     border-radius: 10px;
     margin-top: 5px;
-        img {
-            height: 120px;
-            min-width: 100px;
-            max-width: 100px;
-            border-radius: 10px 0px 0px 10px;
-            padding: 2px;
+
+    img {
+        height: 120px;
+        min-width: 100px;
+        max-width: 100px;
+        border-radius: 10px 0px 0px 10px;
+        padding: 2px;
+    }
+
+    #choice-inner {
+        span {
+            font-family: $subtitle;
+            font-size: 12px;
+            text-transform: lowercase;
+            word-wrap: normal;
         }
-        #choice-inner {
-            span { 
-                font-family: $subtitle;
-                font-size: 12px;
-                text-transform: lowercase;
-                word-wrap: normal;
-            }
-            label {
-                font-family: $body;
-            }
+
+        label {
+            font-family: $body;
         }
     }
+}
+
+@media only screen and (max-width: 770px) {
+    #mobilenav {
+        visibility: visible !important;
+    }
+
+    #sidebar {
+        visibility: hidden;
+    }
+
+    #main {
+        margin-top: 0px;
+    }
+}
