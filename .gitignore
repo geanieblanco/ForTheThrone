@@ -106,7 +106,7 @@ typings/
 # End of https://www.gitignore.io/api/node,sass,firebase
 .gitsecret/keys/random_seed
 
-app.js
+firebase.js
 
 # Created by https://www.gitignore.io/api/git
 # Edit at https://www.gitignore.io/?templates=git
